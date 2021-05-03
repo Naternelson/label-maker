@@ -3,11 +3,15 @@ class ItemCode < ApplicationRecord
     belongs_to :item
 
     validate :matching_parameters
-
-    validates :item_value, format: {with: Regexp(item_code_parameter.regex)}, if: -> {!!item_code_parameter.regex }
+    binding.pry
+    validates :item_value, format: {
+            with: -> {Regexp.new(item_code_parameter.regex)}, 
+            message: "must match format"},
+        if: -> {!!item_code_parameter.regex }
+        
     validates :item_value, presence: true, if: -> {item_code_parameter.presence}
     validates :item_value, uniqueness: true, if: -> {item_code_parameter.unique}
-    
+
     validates :item_code_parameter, uniqueness: {
         scope: :item, message: "already taken" 
     }, if: -> {item.product.has_item_params?}
