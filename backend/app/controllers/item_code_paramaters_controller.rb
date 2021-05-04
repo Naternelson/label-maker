@@ -1,0 +1,2 @@
+class ItemCodeParametersController < ApplicationController
+end
