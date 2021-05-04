@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
 
     def index
         products = Product.all 
-        render json: ProductSerializer.new(products).to_s_json
+        options = {include: [:item_code_parameters]}
+        render json: ProductSerializer.new(products, options)
     end
 
     def create

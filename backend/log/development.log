@@ -828,3 +828,106 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 749ms (Views: 4.9ms | ActiveRecord: 34.7ms | Allocations: 16142)
 
 
+Started GET "/products" for ::1 at 2021-05-04 09:45:43 -0600
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 200 OK in 79ms (Views: 26.1ms | ActiveRecord: 3.6ms | Allocations: 7848)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:46:48 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mItemCodeParameter Load (1.2ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 200 OK in 206ms (Views: 181.8ms | ActiveRecord: 9.9ms | Allocations: 20611)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:48:31 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 200 OK in 77ms (Views: 62.6ms | ActiveRecord: 7.4ms | Allocations: 13570)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:51:05 -0600
+  
+SyntaxError (/home/nate/Development/code/Phase4/project/backend/app/controllers/products_controller.rb:5: syntax error, unexpected ':', expecting end
+        options = include: [:item_code_parameters]
+                         ^):
+  
+app/controllers/products_controller.rb:5: syntax error, unexpected ':', expecting end
+app/controllers/products_controller.rb:5: syntax error, unexpected ':', expecting end
+app/controllers/products_controller.rb:5: syntax error, unexpected ':', expecting end
+Started GET "/products" for ::1 at 2021-05-04 09:51:24 -0600
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 24ms (Allocations: 4200)
+
+
+  
+NameError (uninitialized constant ItemCodeParameterSerializer):
+  
+app/controllers/products_controller.rb:6:in `new'
+app/controllers/products_controller.rb:6:in `index'
+Started GET "/products" for ::1 at 2021-05-04 09:52:47 -0600
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 191ms (Views: 130.9ms | ActiveRecord: 6.7ms | Allocations: 22830)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:56:44 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (7.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 361ms (Views: 282.8ms | ActiveRecord: 8.7ms | Allocations: 3263)
+
+
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mItemCodeParameter Load (0.8ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.9ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mItemCodeParameter Load (26.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItemCodeParameter Update (10.5ms)[0m  [1m[33mUPDATE "item_code_parameters" SET "regex" = ?, "updated_at" = ? WHERE "item_code_parameters"."id" = ?[0m  [["regex", "[]]"], ["updated_at", "2021-05-04 16:12:08.092941"], ["id", 10]]
+  [1m[36mTRANSACTION (59.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" ORDER BY "item_code_parameters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
