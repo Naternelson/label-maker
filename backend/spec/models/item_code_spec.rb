@@ -21,7 +21,7 @@ RSpec.describe ItemCode, :type => :model do
 
   it "is not valid with item_code_parameter that is not found in current product's item requriments" do
     @item = @@main_product.items.create()
-    @target_item_code = @item.item_codes.build(item_code_parameter: @@param_three, item_value: "123456789")
+    @target_item_code = @item.item_codes.build(item_code_parameter: @@param_three, item_value: "234567890")
     expect(@target_item_code).to_not be_valid
   end
   it "is not valid without matching the Regular Expression" do 
