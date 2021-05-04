@@ -1,12 +1,11 @@
 class Model{
     constructor({attributes, id, relationships}){
-        this.isSaved = true
         this.id = id 
         this.setAttributes(attributes)
-        
         for(let a in attributes){
             this[a] = attributes[a]
         }
+        this.isSaved = true
     }
     static rootAddress = "http://localhost:3000/"
     static backendResource = ""
