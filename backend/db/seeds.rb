@@ -4,7 +4,6 @@ paramOne = mainProduct.item_code_parameters.find_or_create_by(regex: "^\d{9}$", 
 paramTwo = mainProduct.item_code_parameters.find_or_create_by(regex: "^\w{6}$", unique: true, presence: true, name: "Device ID")
 
 itemOne = mainProduct.items.create()
-binding.pry
 itemOneValueOne = itemOne.item_codes.find_or_create_by(item_code_parameter: paramOne, item_value: "123456789")
 itemOneValueTwo = itemOne.item_codes.find_or_create_by(item_code_parameter: paramTwo, item_value: "123456")
 

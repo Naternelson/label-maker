@@ -2,13 +2,12 @@ class ItemCode < ApplicationRecord
     belongs_to :item_code_parameter
     belongs_to :item
 
-    validate :matching_parameters
-    binding.pry
-    validates :item_value, format: {
-            with: -> {Regexp.new(item_code_parameter.regex)}, 
-            message: "must match format"},
-        if: -> {!!item_code_parameter.regex }
-        
+    validate :matching_parameters, :match_expression
+    # validates :item_value, format: {
+    #         with: -> (val) {match_expression(val)}, 
+    #         message: "must match format"},
+    #     if: -> {!!item_code_parameter.regex }
+
     validates :item_value, presence: true, if: -> {item_code_parameter.presence}
     validates :item_value, uniqueness: true, if: -> {item_code_parameter.unique}
 
@@ -23,4 +22,13 @@ class ItemCode < ApplicationRecord
             end
         end
     end
+
+    def match_expression
+        unless !item_code_parameter.regex || item_code_parameter.regex == ""
+            unless Regexp.new(item_code_parameter.regex).match(item_value)
+                errors.add(:item_code_parameter, "must match expression")
+            end
+        end
+    end
+
 end
