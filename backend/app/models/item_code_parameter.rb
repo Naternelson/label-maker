@@ -6,13 +6,13 @@ class ItemCodeParameter < ApplicationRecord
     validate :vaid_regex?
 
     def vaild_regex
-        if regex 
-            Regexp.new(regex)
-            true
-        rescue
-            false
-        else
-            true
-        end
+        # if regex 
+        #     Regexp.new(regex)
+        #     true
+        # rescue
+        #     false
+        # else
+        #     true
+        # end
     end
 end

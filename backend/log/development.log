@@ -599,3 +599,232 @@ Migrating to CreateProductItemParameters (20210503181224)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "98f451e09c317e7cf29f55d46256c0c610ccf238"], ["created_at", "2021-05-03 22:10:23.621537"], ["updated_at", "2021-05-03 22:10:23.621537"]]
   [1m[36mTRANSACTION (29.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2021-05-04 09:06:32 -0600
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 83.6ms | Allocations: 516)
+Completed 200 OK in 287ms (Views: 124.6ms | ActiveRecord: 0.0ms | Allocations: 4293)
+
+
+Started GET "/" for ::1 at 2021-05-04 09:06:32 -0600
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 53.6ms | Allocations: 228)
+Completed 200 OK in 71ms (Views: 56.7ms | ActiveRecord: 0.0ms | Allocations: 869)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:06:43 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 200 OK in 98ms (Views: 0.4ms | ActiveRecord: 3.2ms | Allocations: 7014)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:10:40 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 200 OK in 320ms (Views: 182.5ms | ActiveRecord: 14.7ms | Allocations: 6810)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:14:53 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 298ms (ActiveRecord: 15.6ms | Allocations: 10936)
+
+
+  
+SyntaxError (/home/nate/Development/code/Phase4/project/backend/app/models/item_code_parameter.rb:12: syntax error, unexpected rescue, expecting end
+        rescue
+        ^~~~~~):
+  
+app/models/item_code_parameter.rb:12: syntax error, unexpected rescue, expecting end
+app/models/item_code_parameter.rb:12: syntax error, unexpected rescue, expecting end
+app/models/item_code_parameter.rb:12: syntax error, unexpected rescue, expecting end
+app/controllers/products_controller.rb:5:in `index'
+Started GET "/products" for ::1 at 2021-05-04 09:16:17 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mItemCodeParameter Load (5.1ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 200 OK in 288ms (Views: 277.1ms | ActiveRecord: 17.8ms | Allocations: 21404)
+
+
+Started GET "/products" for 127.0.0.1 at 2021-05-04 09:26:45 -0600
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mItemCodeParameter Load (2.2ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:5:in `index'
+Completed 200 OK in 229ms (Views: 167.4ms | ActiveRecord: 6.6ms | Allocations: 24353)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:28:05 -0600
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 29ms (Allocations: 3661)
+
+
+  
+NameError (undefined local variable or method `product' for #<ProductSerializer:0x0000563e7159c468>
+Did you mean?  product_obj):
+  
+app/services/product_serializer.rb:3:in `initialize'
+app/controllers/products_controller.rb:5:in `new'
+app/controllers/products_controller.rb:5:in `index'
+Started GET "/products" for ::1 at 2021-05-04 09:28:14 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+  [1m[36mItemCodeParameter Load (2.9ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+Completed 200 OK in 119ms (Views: 0.4ms | ActiveRecord: 8.6ms | Allocations: 18911)
+
+
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 13]]
+  [1m[36mItem Destroy (8.7ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 11]]
+  [1m[36mItem Destroy (0.7ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 12]]
+  [1m[36mItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 13]]
+  [1m[36mProduct Destroy (3.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 13]]
+  [1m[36mTRANSACTION (74.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 12]]
+  [1m[36mItem Destroy (3.6ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 10]]
+  [1m[36mProduct Destroy (3.0ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 12]]
+  [1m[36mTRANSACTION (69.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/products" for ::1 at 2021-05-04 09:29:27 -0600
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+Completed 200 OK in 173ms (Views: 0.3ms | ActiveRecord: 4.5ms | Allocations: 21222)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:30:47 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/services/product_serializer.rb:7:in `to_s_json'
+  [1m[36mItemCodeParameter Load (0.9ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/services/product_serializer.rb:8:in `to_s_json'
+Completed 200 OK in 124876ms (Views: 4.5ms | ActiveRecord: 8.0ms | Allocations: 46907)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:32:56 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ (pry):6:in `to_s_json'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ (pry):6:in `to_s_json'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ (pry):6:in `to_s_json'
+Completed 200 OK in 38079ms (Views: 0.3ms | ActiveRecord: 9.9ms | Allocations: 36392)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:33:36 -0600
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 57ms (Allocations: 3166)
+
+
+  
+SyntaxError (/home/nate/Development/code/Phase4/project/backend/app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+        )
+        ^):
+  
+app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+app/controllers/products_controller.rb:5:in `index'
+Started GET "/products" for ::1 at 2021-05-04 09:33:43 -0600
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 4ms (Allocations: 1152)
+
+
+  
+SyntaxError (/home/nate/Development/code/Phase4/project/backend/app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+        )
+        ^):
+  
+app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+app/services/product_serializer.rb:12: syntax error, unexpected ')', expecting end
+app/controllers/products_controller.rb:5:in `index'
+Started GET "/products" for ::1 at 2021-05-04 09:33:56 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/product_serializer.rb:8:in `to_s_json'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/services/product_serializer.rb:8:in `to_s_json'
+Completed 200 OK in 165ms (Views: 10.6ms | ActiveRecord: 3.9ms | Allocations: 14835)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:35:15 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/services/product_serializer.rb:8:in `to_s_json'
+Completed 200 OK in 8978ms (Views: 0.5ms | ActiveRecord: 1.2ms | Allocations: 18505)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:35:28 -0600
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ (pry):11:in `to_s_json'
+Completed 200 OK in 31278ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 13414)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:36:24 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/product_serializer.rb:8:in `to_s_json'
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/services/product_serializer.rb:8:in `to_s_json'
+  [1m[36mItemCodeParameter Load (0.8ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/services/product_serializer.rb:8:in `to_s_json'
+Completed 200 OK in 156ms (Views: 1.3ms | ActiveRecord: 10.6ms | Allocations: 16170)
+
+
+Started GET "/products" for ::1 at 2021-05-04 09:38:53 -0600
+Processing by ProductsController#index as HTML
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/product_serializer.rb:21:in `to_s_json'
+  [1m[36mProduct Load (4.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/services/product_serializer.rb:21:in `to_s_json'
+  [1m[36mItemCodeParameter Load (0.8ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/services/product_serializer.rb:21:in `to_s_json'
+Completed 200 OK in 749ms (Views: 4.9ms | ActiveRecord: 34.7ms | Allocations: 16142)
+
+
