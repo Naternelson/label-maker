@@ -31,3 +31,10 @@ function modelProperties(object, attributes, getCB, setCB){
 function fromJson(response){
     return response.json()
 }
+
+function createEl(type, attributes, parent){
+    const el = document.createElement(type)
+    for(let a in attributes){el.setAttribute(a, attributes[a])}
+    if (parent) parent.append(el)
+    return el
+}
