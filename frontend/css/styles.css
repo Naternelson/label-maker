@@ -6,6 +6,7 @@ html, body{
     padding: 0;
     margin: 0;
     max-height: 100vh;
+    overflow: hidden;
 }
 
 body {
@@ -14,11 +15,11 @@ body {
     justify-content: space-between;
 }
 main{
-    display: relative;
+    display: flex;
     width: auto;
     min-width: 15%;
     max-width: 100%;
-    font-size: 5rem;
+    /* font-size: 5rem; */
     padding: 20px
 }
 aside{
@@ -26,6 +27,16 @@ aside{
     width: auto;
     min-width: 30em;
     max-width: 100%;
+    max-height: 100vh;
+}
+aside::after{
+    content: "";
+    position: absolute;
+    bottom:0px;
+    /* left: 0; */
+    height: 100px;
+    width: 100%;
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
 }
 nav{
     display: relative;
@@ -45,81 +56,25 @@ nav:hover{
     transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 5vh;
-    overflow: auto;
-}
-li{
-    border-radius: 0 20px 20px 10px;
-    position: relative;
-    left: 0;
-    opacity: 100%;
-    background-color: white;
+.header-bar{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 3px double hsl(300, 3%, 80%);
     margin-bottom: 10px;
-    align-items: center;
-    padding: 1rem 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-    transition-property: left, opacity, padding;
-    transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
-    transition-duration: 0.5s;
+    color: hsl(300, 23%, 17%);
 }
-.list li:hover{
-    padding: 3rem 20px;
-    transition: padding 0.3s cubic-bezier(0.33, 1, 0.68, 1);
-}
+
+
 .title{
-    font-size: 1.4em;
+    font-size: 1em;
     color:hsl(300, 3%, 50%);
     font-weight: 550;
-    padding-top: 0.4em;
+    padding-top: .3em;
     text-align: center;
 }
 
-.list li.pre-animate{
-    left: -20px;
-    opacity: 0;
-}
 
-.list-btns{
-    display: flex;
-    flex-direction: row;
-}
-.list-header{
-    /* Wrapper */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    width: 100%;
-    height: 100%;
-}
-.list-body{
-    max-width: 300px;
-    font-size: 1.1em;
-    font-style: oblique;
-    padding-top: 1em;
-    margin-bottom: .5em;
-    padding-left: .5em;
-    margin-top: 5px;
-    border-top: 2px solid grey;
-    transition-property: overflow, max-height, margin, padding;
-    transition-duration: .5s;
-    transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
-    will-change: all;
-}
 
-.list-body.hidden{
-    padding: 0;
-    margin: 0;
-    border: 0;
-    /* display: none; */
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1) ;
-    will-change: all;
-}
 
 .btn{
     border-radius: 25px;
@@ -127,11 +82,12 @@ li{
     background-color: hsl(300, 50%, 36%);
     color: white;
     font-weight: bold;
+    font-size: .8em;
     justify-content: center;
     align-items: center;
     border: 0;
     cursor: pointer;
-    padding: .75em 1.5em;
+    padding: .5em 1.5em;
     margin-bottom: .5em;
     transition: background-color .3s ease-in;
 }

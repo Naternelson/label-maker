@@ -56,6 +56,7 @@ class Model {
     static root = "http://localhost:3000/"
     static resource = ""
     static headers =  { 'Content-Type': 'application/json'}
+    static instances = []
     static async retrieve(id){
         let url = this.root + this.resource
         if(id) url += `${id}/`

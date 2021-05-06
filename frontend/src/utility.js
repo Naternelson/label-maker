@@ -28,6 +28,17 @@ function modelProperties(object, attributes, getCB, setCB){
     }
 }
 
+function addProperty(object, property, getCB, setCB){
+    Object.defineProperty(object.prototype, property, {
+        get: getCB || function(){
+            return this[`_${property}`]
+        },
+        set: setCB || function(x){
+            this[`_${property}`] = x
+        }
+    })
+}
+
 function fromJson(response){
     return response.json()
 }
@@ -37,4 +48,24 @@ function createEl(type, attributes, parent){
     for(let a in attributes){el.setAttribute(a, attributes[a])}
     if (parent) parent.append(el)
     return el
+}
+
+function moveToActiveZone(element){
+    const az = findOrCreateElementById("active-zone", main)
+    az.append(element)
+}
+
+function findOrCreateElementById(id, parent = document, type="div"){
+    const el = parent.querySelector(`#${id}`)
+    if (el) return el 
+    return createEl(type, {id}, parent)
+}
+function findOrCreateElementByClass({classAttr, parent = document, type="div"}){
+    const el = parent.getElementsByClassName(classAttr)
+    if (el) return el 
+    return createEl(type, {class: classAttr}, parent)
+}
+
+function getStyle(el, cssRule){
+    return getComputedStyle(el)[cssRule].match(/\d+/g)
 }
