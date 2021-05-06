@@ -11,11 +11,38 @@ html, body{
 body {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 main{
     display: relative;
-    height: 100vh;
-    padding: 0 5vh;
+    width: auto;
+    min-width: 15%;
+    max-width: 100%;
+    font-size: 5rem;
+    padding: 20px
+}
+aside{
+    display: relative;
+    width: auto;
+    min-width: 30em;
+    max-width: 100%;
+}
+nav{
+    display: relative;
+    width: 3%;
+    overflow-x: hidden;
+    min-width: 1%;
+    max-width: 30%;
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color: hsl(300, 50%, 20%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: width .8s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+nav:hover{
+    width: 20%;
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 ul{
@@ -24,8 +51,7 @@ ul{
     padding: 5vh;
     overflow: auto;
 }
-
-.list li{
+li{
     border-radius: 0 20px 20px 10px;
     position: relative;
     left: 0;
@@ -45,7 +71,7 @@ ul{
 }
 .title{
     font-size: 1.4em;
-    color:rgba(0, 0, 0, 0.19)
+    color:hsl(300, 3%, 50%);
     font-weight: 550;
     padding-top: 0.4em;
     text-align: center;

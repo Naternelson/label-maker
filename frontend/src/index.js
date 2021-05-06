@@ -24,5 +24,18 @@ async function populateProductList(){
 
 populateProductList()//Will get a promise and then wait for the rest of the stack to clear before executing
 const mainBody = document.querySelector("main")
-const productList = createEl("ul", {class: "list"}, mainBody)
+const nav = document.querySelector("nav")
+const aside = document.querySelector("aside")
+wWidth = window.innerWidth 
+wHeight = window.innerHeight
+
+function gCol(col){
+    return `${wWidth/12 * col}px`
+}
+
+// nav.style.width = gCol(2)
+// aside.style.width = gCol(4)
+// mainBody.style.width = gCol(6)
+
+const productList = createEl("ul", {class: "list"}, aside)
 
