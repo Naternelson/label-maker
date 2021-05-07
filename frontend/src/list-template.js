@@ -21,7 +21,8 @@ class ListTemplate{
         if (index > -1){
             item.animateOff()
             this.listItems.splice(index,1)
-            setTimeout(()=> {item.remove()}, 3000)
+            // debugger
+            item.listItemElement.remove()
         }
     }
     animateOn(){
@@ -36,10 +37,9 @@ class ListTemplate{
 }
 
 class ListItemController{
-    constructor(list, id=""){
+    constructor(list){
         this.list = list 
-        this.dataId = id
-        this.listItemElement = createEl("li", {"data_id": this.dataId, class: "pre-animate list-item"}, this.list.wrapper)
+        this.listItemElement = createEl("li", { class: "pre-animate list-item"}, this.list.wrapper)
         this.headerElement = createEl("div", {class: "list-header"}, this.listItemElement)
         this.titleElement = createEl("div", {class: "title"}, this.headerElement)
         this.buttonGroup = createEl("div", {class: "list-btns"}, this.headerElement)

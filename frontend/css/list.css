@@ -3,7 +3,7 @@ ul{
     padding: 2vh;
     overflow-y: auto;
     max-height: 100%;
-    position: relative;
+    /* position: relative; */
 }
 
 
@@ -18,14 +18,15 @@ ul{
     align-items: center;
     padding: 1rem 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-    transition-property: left, opacity, padding, transform;
+    transition-property: opacity, padding, transform;
     transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
     transition-duration: 0.5s;
 }
-/* .list li:hover{
-    padding: 3rem 20px;
-    transition: padding 0.3s cubic-bezier(0.33, 1, 0.68, 1);
-} */
+
+.list-item.feature-move{
+    position: absolute;
+    /* transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1); */
+}
 
 .list-btns{
     display: flex;
@@ -68,7 +69,7 @@ ul{
     will-change: all;
 }
 
-.list li.pre-animate{
+.pre-animate{
     left: -20px;
     opacity: 0;
 }
