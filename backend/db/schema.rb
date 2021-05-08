@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_205249) do
+ActiveRecord::Schema.define(version: 2021_05_03_181224) do
 
   create_table "item_code_parameters", force: :cascade do |t|
     t.string "regex"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_205249) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "product_name"
+    t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

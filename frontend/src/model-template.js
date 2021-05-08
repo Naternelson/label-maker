@@ -1,29 +1,43 @@
 class Model {
+    //
+    // MODEL INSTANCE METHODS AND PROPERTIES
+    //
     constructor({attributes, id, relationships}){
-        this.id = id 
-        for(let a in attributes){
-            this[a] = attributes[a]
-        }
-        this.isSaved = true
+        this.id = id
+        if(attributes){for(let a in attributes){this[a] = attributes[a]}}
+        this.relate(relationships)
+        this.isSaved = !!this.id
     }
-    async update(){ //Re-pulls the data from this instance and updates the infromation from the server
+
+    relate(rels){
+        const c = this.constructor
+        for(let r in rels){
+            this[toLowerCamel(r)] =  rels[r].data.map(row=> c.findOrCreateById(row.type, row.id))
+        }
+    }
+
+    async update(){ 
+        //Re-pulls the data from this instance and updates the infromation from the server
         const returnObj = await this.constructor.retrieve(this.id)
         return returnObj
     }
-    async post(arr){ //Sends a POST request to the server
+    async post(arr){ 
+        //Sends a POST request to the server
+        // 
         const c = this.constructor
         const url = c.root + c.resource
-        if(id) url += `${id}/`
         const options = {
             method: 'POST',
             headers: {...c.headers},
-            body: JSON.stringify(c.createBody(this,arr))
+            body: c.createBody(this, arr)
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
-        return obj.data.map(obj=> new this(obj))
+        c.buildRelationships(obj)
+        return c.addInstance(obj.data)
     }
-    async save(arr){ //Sends a PATCH request to the server
+    async save(arr){ 
+        //Sends a PATCH request to the server
         if (!this.id) return 
         const c = this.constructor
         const url = c.root + c.resource + this.id
@@ -34,10 +48,11 @@ class Model {
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
-        this.isSaved = true
-        return obj
+        c.buildRelationships(obj)
+        return c.addInstance(obj.data)
     }
-    async destroy(){ //Deletes a data object from the server by sending the DELETE request. 
+    async destroy(){ 
+        //Deletes a data object from the server by sending the DELETE request. 
         if (!this.id) return 
         const c = this.constructor
         const url = c.root + c.resource + this.id
@@ -51,36 +66,50 @@ class Model {
         const obj = await fromJson(response)
         return obj
     }
-    static createBody(obj, arr){ //Object is a JS Model Instance, and arr is an array of attributes to send. If blank, all attributes are sent
+    //
+    // STATIC MODEL METHODS AND PROPERTIES
+    //
+    static root = "http://localhost:3000/"
+    static resource = ""
+    static headers =  { 'Content-Type': 'application/json'}
+    static instances = []
+    static createBody(obj, arr){ 
+        //Object is a JS Model Instance, and arr is an array of attributes to send. If blank, all attributes are sent
         const body = {}
         if(obj.id) body.id = obj.id
         if(arr){for(let a of arr){body[a] = obj[`_${a}`]}}
         if(!arr){for(let p in obj){if(p.charAt(0)=="_"){body[p.slice(1)] = obj[p]}}}
         return JSON.stringify(body) 
     }
-    static root = "http://localhost:3000/"
-    static resource = ""
-    static headers =  { 'Content-Type': 'application/json'}
-    static instances = []
-    static async retrieve(id){ //Retrieves one or all data from the server with a GET Request
+    static async retrieve(id){ 
+        //Retrieves one or all data from the server with a GET Request
         let url = this.root + this.resource
         if(id) url += `${id}/`
         const response = await fetch(url)
         const obj = await fromJson(response)
-        if(Array.isArray(obj.data)){ //The return object.data is an array if multiple records are sent back, a single object otherwise
+        this.buildRelationships(obj)
+        if(Array.isArray(obj.data)){ //The return object.data is an array if multiple records are sent back; a single object otherwise
             for(let row of obj.data){this.addInstance(row)}
         } else {
             this.addInstance(obj.data)
         }
         return this.instances
     }
-    static addInstance(data){ //Creates or updates a JS Object from its corresponding server object. 
-        const ins = this.instances.find(instance=>instance.id == data.id)
-        debugger
-        if(ins){ for(let a in data.attributes) { ins[a] = data.attributes[a] } ins.isSaved = true} //If We already have an instance of this object, update its attributes
-        if(!ins){this.instances.push(new this(data))} //If not create a new object instance
+    static buildRelationships(obj){
+        for(let r of obj.included){constructClass(r.type).addInstance(r)}
     }
-
+    static findOrCreateById(className, id){
+        return constructClass(className).addInstance({id})
+    }
+    static addInstance(data){ 
+        //Creates or updates a JS Object from its corresponding server object. 
+        let ins = this.instances.find(instance=>instance.id == data.id)
+        if(ins){ for(let a in data.attributes) { ins[a] = data.attributes[a] } ins.relate(data.relationships); ins.isSaved = true} 
+        //If We already have an instance of this object, update its attributes
+        if(!ins){ins = new this(data); this.instances.push(ins)} 
+        //If not create a new object instance
+        return ins
+    }
     static removeInstance(i){
         const index = this.instances.findIndexOf(instance=>instance == i)
         this.instances.splice(index,1)

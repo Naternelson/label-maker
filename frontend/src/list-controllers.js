@@ -34,23 +34,8 @@ class ProductListItem extends ListItemController{
         const fzBox = featureZone.getBoundingClientRect()
         const currentBox = el.getBoundingClientRect()
         featureZone.append(el)
-        // el.classList.add("feature-move")
-        // el.style.left = currentBox.x.toString() +"px"
-        // el.style.top = currentBox.y.toString()+"px"
-        // document.body.append(el)
-        
-        // requestAnimationFrame(()=>{
-        //     debugger
-        //     requestAnimationFrame(()=>el.style.left = fzBox.x.toString()+"px")
-        //     requestAnimationFrame(()=>el.style.top = fzBox.y.toString()+"px")
-        //     requestAnimationFrame(()=>)
-        //     requestAnimationFrame(()=>el.style.removeProperty("left"))
-        //     requestAnimationFrame(()=>el.style.removeProperty("top"))
-        //     requestAnimationFrame(()=>el.classList.remove("feature-move"))
-        // })
-        
     }
 
-    setTitle(){this.title = this.product.product_name}
+    setTitle(){this.title = this.product.name}
     setBody(){this.body = this.product.description}
 }

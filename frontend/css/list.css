@@ -3,7 +3,6 @@ ul{
     padding: 2vh;
     overflow-y: auto;
     max-height: 100%;
-    /* position: relative; */
 }
 
 
@@ -25,7 +24,6 @@ ul{
 
 .list-item.feature-move{
     position: absolute;
-    /* transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1); */
 }
 
 .list-btns{
@@ -42,19 +40,16 @@ ul{
     height: 100%;
 }
 .list-body{
-    /* max-width: 300px; */
     font-size: 1.1em;
     font-style: oblique;
     padding-top: 1em;
     margin: 0;
     margin-bottom: .5em;
-    /* padding-left: .5em; */
     margin-top: 5px;
     border-top: 2px solid grey;
     transition-property: overflow, max-height, margin, padding, opacity;
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
-    /* will-change: all; */
 }
 
 .list-body.hidden{
@@ -62,7 +57,6 @@ ul{
     margin: 0;
     border: 0;
     opacity: 0;
-    /* display: none; */
     max-height: 0;
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1) ;

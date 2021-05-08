@@ -1,0 +1,48 @@
+.form-wrapper{
+    /* position: relative; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+form {
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: hsl(0, 0%, 96%);
+    padding: 1em 2em;
+    border-radius: 25px;
+}
+
+input[type=text]{
+    /* display: relative; */
+    margin: 1em;
+    padding: 10px 20px;
+    color:rgb(121, 121, 121);
+    min-width: 10em;
+    height: 1em;
+    border: none;
+    border-radius: 25px;
+    transition: height .3s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: height;
+}
+input[type=text]:hover{
+    height: 2em;
+    transition: height 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+input[type=text]:focus{
+    height: 2em;
+    color: black;
+    transition: height 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+label {
+    font-style: oblique;
+    color: rgb(58, 58, 58);
+}
+form button.btn{
+    font-size: 1.2em;
+}

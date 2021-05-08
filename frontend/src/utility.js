@@ -43,6 +43,23 @@ function fromJson(response){
     return response.json()
 }
 
+function constructClass(str){
+    return   Function('return ' + toCamel(str))()
+}
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+} 
+
+function toCamel(str){
+    return str.split("_").map(s=> capitalize(s)).join("")
+}
+
+function toLowerCamel(str){
+    const camel = toCamel(str)
+    return camel.charAt(0).toLowerCase() + camel.slice(1)
+}
+
 function createEl(type, attributes, parent){
     const el = document.createElement(type)
     for(let a in attributes){el.setAttribute(a, attributes[a])}
