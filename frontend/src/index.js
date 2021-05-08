@@ -29,7 +29,6 @@ async function newProductHandler(e){
     const inputs = e.target.form.querySelectorAll("input")
     const attributes = {}
     inputs.forEach(input=>{ 
-        debugger
         attributes[input.name] = input.value})
     const product = new Product({attributes})
     await product.post()

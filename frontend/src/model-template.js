@@ -9,34 +9,33 @@ class Model {
         this.isSaved = !!this.id
     }
 
-    relate(rels){
+    relate(relationships){
         const c = this.constructor
-        for(let r in rels){
-            this[toLowerCamel(r)] =  rels[r].data.map(row=> c.findOrCreateById(row.type, row.id))
+        for(let r in relationships){
+            this[toLowerCamel(r)] =  relationships[r].data.map(row=> c.findOrCreateById(row.type, row.id))
         }
     }
 
     async update(){ 
         //Re-pulls the data from this instance and updates the infromation from the server
         const returnObj = await this.constructor.retrieve(this.id)
-        return returnObj
+        return this
     }
-    async post(arr){ 
+    async post(attributes, include ){ 
         //Sends a POST request to the server
-        // 
         const c = this.constructor
         const url = c.root + c.resource
         const options = {
             method: 'POST',
             headers: {...c.headers},
-            body: c.createBody(this, arr)
+            body: JSON.stringify(c.createBody(this, attributes, include))
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
         c.buildRelationships(obj)
         return c.addInstance(obj.data)
     }
-    async save(arr){ 
+    async save(attributes, include){ 
         //Sends a PATCH request to the server
         if (!this.id) return 
         const c = this.constructor
@@ -44,7 +43,7 @@ class Model {
         const options = {
             method: 'PATCH',
             headers: {...c.headers},
-            body: JSON.stringify(c.createBody(this, arr))
+            body: JSON.stringify(c.createBody(this, attributes, include))
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
@@ -73,13 +72,18 @@ class Model {
     static resource = ""
     static headers =  { 'Content-Type': 'application/json'}
     static instances = []
-    static createBody(obj, arr){ 
-        //Object is a JS Model Instance, and arr is an array of attributes to send. If blank, all attributes are sent
+    static createBody(obj, attributes, include=[]){ 
+        //Object is a JS Model Instance, and attributes is an array of attributes to send. If blank, all attributes are sent. 
+        //Server Attributes are identified with a '_' in front. 
+        //Include is reserved for relationship models to include
         const body = {}
         if(obj.id) body.id = obj.id
-        if(arr){for(let a of arr){body[a] = obj[`_${a}`]}}
-        if(!arr){for(let p in obj){if(p.charAt(0)=="_"){body[p.slice(1)] = obj[p]}}}
-        return JSON.stringify(body) 
+        if(attributes){for(let a of attributes){body[a] = obj[`_${a}`]}}
+        if(!attributes){for(let p in obj){if(p.charAt(0)=="_"){body[toSnakeCase(p.slice(1))] = obj[p]}}}
+        for(let model of include){
+            body[toSnakeCase(model)] = obj[model].map(instance=>this.createBody(instance)) 
+        }
+        return body 
     }
     static async retrieve(id){ 
         //Retrieves one or all data from the server with a GET Request
@@ -88,7 +92,7 @@ class Model {
         const response = await fetch(url)
         const obj = await fromJson(response)
         this.buildRelationships(obj)
-        if(Array.isArray(obj.data)){ //The return object.data is an array if multiple records are sent back; a single object otherwise
+        if(Array.isArray(obj.data)){ //The return object.data is an attributesay if multiple records are sent back; a single object otherwise
             for(let row of obj.data){this.addInstance(row)}
         } else {
             this.addInstance(obj.data)

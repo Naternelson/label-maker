@@ -59,6 +59,13 @@ function toLowerCamel(str){
     const camel = toCamel(str)
     return camel.charAt(0).toLowerCase() + camel.slice(1)
 }
+function toSnakeCase(str){
+    return str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('_');
+}
+  
 
 function createEl(type, attributes, parent){
     const el = document.createElement(type)
