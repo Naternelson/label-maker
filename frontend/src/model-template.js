@@ -25,6 +25,7 @@ class Model {
         //Sends a POST request to the server
         const c = this.constructor
         const url = c.root + c.resource
+        debugger
         const options = {
             method: 'POST',
             headers: {...c.headers},
@@ -83,6 +84,7 @@ class Model {
         for(let model of include){
             body[toSnakeCase(model)] = obj[model].map(instance=>this.createBody(instance)) 
         }
+        console.log(body)
         return body 
     }
     static async retrieve(id){ 

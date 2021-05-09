@@ -96,6 +96,16 @@ nav:hover{
     transition: background-color .3s ease-in;
 }
 
+.btn.btn-flat{
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1em;
+    font-weight: 400;
+    color: hsl(300, 15%, 39%);
+    border-radius: 0;
+    border-bottom: 2px solid hsl(300, 6%, 69%);
+    margin-bottom: 1.5em;
+}
+
 button, input{
     outline: none;
 }

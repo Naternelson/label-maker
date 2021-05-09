@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
 
     def create
         product = Product.create(product_params)
+        for i in params[:item_code_parameters] do 
+            product.item_code_parameters.create(regex: i[:regex], name: i[:name])
+        end
         options = {include: [:item_code_parameters, :items]}
         render json: ProductSerializer.new(product, options)
     end
@@ -31,4 +34,5 @@ class ProductsController < ApplicationController
     def product_params
         params.require(:product).permit(:name, :description)
     end
+
 end

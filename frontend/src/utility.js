@@ -65,7 +65,13 @@ function toSnakeCase(str){
     .map(x => x.toLowerCase())
     .join('_');
 }
-  
+
+function toTitleCase(str){
+    return str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => capitalize(x))
+    .join(' ');
+}
 
 function createEl(type, attributes, parent){
     const el = document.createElement(type)

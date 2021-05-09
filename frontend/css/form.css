@@ -3,12 +3,17 @@
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+
+    /* align-content: center; */
+    /* background-color: white;  */
 }
 
 form {
-    width: 20em;
+    /* width: 20em; */
+    max-height: 90vh;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,8 +21,21 @@ form {
     padding: 1em 2em;
     border-radius: 25px;
 }
-
-input[type=text]{
+.form-title{
+    font-weight: 500;
+    font-size: 3em;
+    text-align: center;
+    color: rgb(65, 65, 65);
+    margin: .75em .3em;
+    padding: .3em .5em;
+    border-bottom: 3px solid rgb(117, 117, 117);
+}
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+input{
     /* display: relative; */
     margin: 1em;
     padding: 10px 20px;
@@ -29,11 +47,11 @@ input[type=text]{
     transition: height .3s cubic-bezier(0.33, 1, 0.68, 1);
     will-change: height;
 }
-input[type=text]:hover{
+input:hover{
     height: 2em;
     transition: height 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
-input[type=text]:focus{
+input:focus{
     height: 2em;
     color: black;
     transition: height 0.3s cubic-bezier(0.33, 1, 0.68, 1);
