@@ -1,0 +1,17 @@
+.title-show{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+.title-show div{
+    padding: 0 10px;
+}
+.title-tag{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+h1{
+    padding: 0;
+    margin: 0;
+}

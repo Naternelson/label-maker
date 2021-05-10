@@ -29,7 +29,7 @@ class Model {
         const options = {
             method: 'POST',
             headers: {...c.headers},
-            body: JSON.stringify(packageBody(this, include))//c.createBody(this, attributes, include))
+            body: JSON.stringify(packageBody(this, include))
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
@@ -44,7 +44,7 @@ class Model {
         const options = {
             method: 'PATCH',
             headers: {...c.headers},
-            body: JSON.stringify(c.createBody(this, attributes, include))
+            body: JSON.stringify(packageBody(this, include))
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
@@ -60,7 +60,7 @@ class Model {
         const options = {
             method: 'DELETE',
             headers: {...c.headers},
-            body: JSON.stringify(c.createBody(this))
+            body: JSON.stringify(packageBody(this))
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
@@ -73,20 +73,20 @@ class Model {
     static resource = ""
     static headers =  { 'Content-Type': 'application/json'}
     static instances = []
-    static createBody(obj, attributes, include=[]){ 
-        //Object is a JS Model Instance, and attributes is an array of attributes to send. If blank, all attributes are sent. 
-        //Server Attributes are identified with a '_' in front. 
-        //Include is reserved for relationship models to include
-        const body = {}
-        if(obj.id) body.id = obj.id
-        if(attributes){for(let a of attributes){body[a] = obj[`_${a}`]}}
-        if(!attributes){for(let p in obj){if(p.charAt(0)=="_"){body[toSnakeCase(p.slice(1))] = obj[p]}}}
-        for(let model of include){
-            body[toSnakeCase(model)] = obj[model].map(instance=>this.createBody(instance)) 
-        }
-        console.log(body)
-        return body 
-    }
+    // static createBody(obj, attributes, include=[]){ 
+    //     //Object is a JS Model Instance, and attributes is an array of attributes to send. If blank, all attributes are sent. 
+    //     //Server Attributes are identified with a '_' in front. 
+    //     //Include is reserved for relationship models to include
+    //     const body = {}
+    //     if(obj.id) body.id = obj.id
+    //     if(attributes){for(let a of attributes){body[a] = obj[`_${a}`]}}
+    //     if(!attributes){for(let p in obj){if(p.charAt(0)=="_"){body[toSnakeCase(p.slice(1))] = obj[p]}}}
+    //     for(let model of include){
+    //         body[toSnakeCase(model)] = obj[model].map(instance=>this.createBody(instance)) 
+    //     }
+    //     console.log(body)
+    //     return body 
+    // }
     static async retrieve(id){ 
         //Retrieves one or all data from the server with a GET Request
         let url = this.root + this.resource

@@ -71,8 +71,17 @@ function featureProduct(product){
     const paramCount = createEl("div", {class: "title-tag"}, titleCard)
     paramCount.innerText = product.itemCodeParameters.length.toString() + " Item Code Parameters"
     const buttonGroup = createEl("div", {class: "button-group"}, wrapper)
+    const closeBtn = createEl("button", {class: "btn btn-flat", type: "button"}, buttonGroup)
+    closeBtn.innerText = "CLOSE"
+    const deleteBtn = createEl("button", {class: "btn btn-flat", type: "button"}, buttonGroup)
+    deleteBtn.innerText = "DELETE"
+    deleteBtn.addEventListener("click", ()=>{deleteProduct(product)})
     createItemForm(product, wrapper)
     populateItemTable(product, wrapper)
+}
+
+function deleteProduct(product){
+    product.del
 }
 
 function createItemForm(product, wrapper){
@@ -93,13 +102,23 @@ function createItemForm(product, wrapper){
         formHandler.mapInput("itemValue",{type: "text", name: param.name, pattern: param.regex}, nestedModel, parent)
     }
     const submit = createEl("button", {type: "submit", class: "btn"}, formHandler.form)
-    submit.innerText = "Add Product"
+    submit.innerText = "Add Item"
     
 
     
     createEl("hr",null, parent)
 }
-function populateItemTable(){}
+function populateItemTable(product){
+    const table = createEl("div", {class: "table"}, document.querySelector(".show"))
+    const tableHeader = createEl("div", {class: "table-header"}, table)
+    for(let param of product.itemCodeParameters){
+        const columnHead = createEl("div", {class: "column-head"}, tableHeader)
+        columnHead.innerText = toTitleCase(param.name)
+    }
+    const colCount =  product.itemCodeParameters.length + 2
+    // for()
+
+}
 
 
 createProductList()

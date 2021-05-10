@@ -10,9 +10,11 @@
     /* background-color: white;  */
 }
 .show .form-wrapper{
-    min-width: 40em;
     /* background-color: blue; */
-    justify-content: start;
+    display:inherit;
+    height: auto;
+    min-width: 20em;
+    /* justify-content: start; */
 }
 
 .show form .form-title {
