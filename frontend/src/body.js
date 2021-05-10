@@ -22,6 +22,9 @@ function packageBody(model, include=[]){
             }
             return instanceAttributes
         })
+        if(body[modelName][toSnakeCase(x) + "_attributes"].length == 1 && body[modelName][toSnakeCase(x) + "_attributes"][0].id){
+            body[modelName][toSnakeCase(x) + "_id"] = body[modelName][toSnakeCase(x) + "_attributes"][0].id
+        }
     } 
     return body
 }

@@ -90,7 +90,6 @@ function closeProduct(product){
 }
 
 async function deleteProduct(product){
-    
     const res = await product.destroy()
     main.innerHTML = ""
     createNewProductForm()
