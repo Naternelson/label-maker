@@ -25,7 +25,7 @@ class Model {
         //Sends a POST request to the server
         const c = this.constructor
         const url = c.root + c.resource
-        debugger
+        
         const options = {
             method: 'POST',
             headers: {...c.headers},
@@ -34,6 +34,7 @@ class Model {
         const response = await fetch(url, options)
         const obj = await fromJson(response)
         c.buildRelationships(obj)
+        
         return c.addInstance(obj.data)
     }
     async save(attributes, include){ 
@@ -55,8 +56,8 @@ class Model {
         //Deletes a data object from the server by sending the DELETE request. 
         if (!this.id) return 
         const c = this.constructor
-        const url = c.root + c.resource + this.id
-        if(id) url += `${id}/`
+        let url = c.root + c.resource + this.id
+        if(this.id) url += `${this.id}/`
         const options = {
             method: 'DELETE',
             headers: {...c.headers},
@@ -64,6 +65,7 @@ class Model {
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
+        c.removeInstance(this)
         return obj
     }
     //
@@ -94,7 +96,7 @@ class Model {
         const response = await fetch(url)
         const obj = await fromJson(response)
         this.buildRelationships(obj)
-        if(Array.isArray(obj.data)){ //The return object.data is an attributesay if multiple records are sent back; a single object otherwise
+        if(Array.isArray(obj.data)){ //The return object.data is an attributes array if multiple records are sent back; a single object otherwise
             for(let row of obj.data){this.addInstance(row)}
         } else {
             this.addInstance(obj.data)
@@ -109,15 +111,19 @@ class Model {
     }
     static addInstance(data){ 
         //Creates or updates a JS Object from its corresponding server object. 
+        
         let ins = this.instances.find(instance=>instance.id == data.id)
         if(ins){ for(let a in data.attributes) { ins[a] = data.attributes[a] } ins.relate(data.relationships); ins.isSaved = true} 
         //If We already have an instance of this object, update its attributes
         if(!ins){ins = new this(data); this.instances.push(ins)} 
         //If not create a new object instance
+        console.log(ins)
         return ins
     }
     static removeInstance(i){
-        const index = this.instances.findIndexOf(instance=>instance == i)
+        debugger
+        const arr = this.instances
+        const index = arr.indexOf(i)
         this.instances.splice(index,1)
     }
 }

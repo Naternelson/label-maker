@@ -27625,3 +27625,1403 @@ No template found for ItemsController#create, rendering head :no_content
 Completed 204 No Content in 48877ms (Allocations: 15568)
 
 
+Started GET "/products/" for ::1 at 2021-05-09 20:54:34 -0600
+Processing by ProductsController#index as */*
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mProduct Load (3.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 415ms (Views: 332.5ms | ActiveRecord: 27.8ms | Allocations: 25721)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 20:54:58 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"This is a test"}}
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (16.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teamy"], ["description", "This is a test"], ["created_at", "2021-05-10 02:54:58.414235"], ["updated_at", "2021-05-10 02:54:58.414235"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (16.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 153ms (Views: 33.9ms | ActiveRecord: 34.9ms | Allocations: 9141)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 20:55:03 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (1.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 181ms (Views: 148.6ms | ActiveRecord: 7.6ms | Allocations: 12410)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 20:55:20 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 312ms (Views: 305.2ms | ActiveRecord: 5.3ms | Allocations: 12409)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 20:55:53 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (4.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (1.0ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 2376ms (Views: 2344.9ms | ActiveRecord: 11.6ms | Allocations: 12414)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 20:56:54 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (119.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 824ms (Views: 696.9ms | ActiveRecord: 124.9ms | Allocations: 12411)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 20:57:21 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.8ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 195ms (Views: 185.7ms | ActiveRecord: 7.2ms | Allocations: 12409)
+
+
+Started DELETE "/products/33/" for ::1 at 2021-05-09 20:57:28 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"This is a test", "id"=>"3"}, "id"=>"33"}
+  [1m[36mProduct Load (7.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (12.7ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (41.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 144ms (Views: 1.0ms | ActiveRecord: 62.8ms | Allocations: 4809)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 20:57:45 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 77ms (Views: 68.3ms | ActiveRecord: 7.3ms | Allocations: 9473)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:00:37 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (183.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (1.1ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 1211ms (Views: 929.5ms | ActiveRecord: 188.7ms | Allocations: 9474)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:00:47 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning"}}
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (13.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teamy"], ["description", "Good morning"], ["created_at", "2021-05-10 03:00:47.887876"], ["updated_at", "2021-05-10 03:00:47.887876"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (21.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 716ms (Views: 514.8ms | ActiveRecord: 42.8ms | Allocations: 8818)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:01:03 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 141ms (Views: 134.0ms | ActiveRecord: 4.7ms | Allocations: 12409)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:01:33 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 142ms (Views: 132.0ms | ActiveRecord: 7.9ms | Allocations: 12409)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:02:44 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 110ms (Views: 101.9ms | ActiveRecord: 5.1ms | Allocations: 12410)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:04:17 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 169ms (Views: 158.8ms | ActiveRecord: 5.3ms | Allocations: 12410)
+
+
+Started DELETE "/products/44/" for ::1 at 2021-05-09 21:04:28 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning", "id"=>"4"}, "id"=>"44"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 4]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (9.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (30.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 87ms (Views: 1.6ms | ActiveRecord: 41.1ms | Allocations: 4604)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:05:30 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"A Test Product", "description"=>"This Product Will Test Some Features for us", "item_code_parameters_attributes"=>[{"name"=>"UDI", "regex"=>"\\d{9}"}, {"name"=>"Device ID", "regex"=>"\\w{6}"}]}}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "A Test Product"], ["description", "This Product Will Test Some Features for us"], ["created_at", "2021-05-10 03:05:31.180474"], ["updated_at", "2021-05-10 03:05:31.180474"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (2.6ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\d{9}"], ["name", "UDI"], ["created_at", "2021-05-10 03:05:31.204516"], ["updated_at", "2021-05-10 03:05:31.204516"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (4.4ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 5], ["item_code_parameter_id", 3], ["created_at", "2021-05-10 03:05:31.295765"], ["updated_at", "2021-05-10 03:05:31.295765"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (0.4ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\w{6}"], ["name", "Device ID"], ["created_at", "2021-05-10 03:05:31.307519"], ["updated_at", "2021-05-10 03:05:31.307519"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (0.3ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 5], ["item_code_parameter_id", 4], ["created_at", "2021-05-10 03:05:31.314076"], ["updated_at", "2021-05-10 03:05:31.314076"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (19.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 5]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 5]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 4]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 5]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 477ms (Views: 40.0ms | ActiveRecord: 36.9ms | Allocations: 22745)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:07:41 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (2.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 5]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 5]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (3.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 5]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 3]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 4]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 193ms (Views: 173.6ms | ActiveRecord: 15.2ms | Allocations: 15001)
+
+
+Started DELETE "/products/55/" for ::1 at 2021-05-09 21:08:05 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"A Test Product", "description"=>"This Product Will Test Some Features for us", "id"=>"5"}, "id"=>"55"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 5]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (5.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (36.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 96ms (Views: 0.5ms | ActiveRecord: 42.9ms | Allocations: 5334)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:09:44 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 144ms (Views: 137.1ms | ActiveRecord: 5.1ms | Allocations: 9475)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:09:54 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Test", "description"=>"Good morning", "item_code_parameters_attributes"=>[{"name"=>"Teamy", "regex"=>"\\w{6}"}]}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (3.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test"], ["description", "Good morning"], ["created_at", "2021-05-10 03:09:54.191509"], ["updated_at", "2021-05-10 03:09:54.191509"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (1.3ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\w{6}"], ["name", "Teamy"], ["created_at", "2021-05-10 03:09:54.229389"], ["updated_at", "2021-05-10 03:09:54.229389"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (0.6ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 6], ["item_code_parameter_id", 5], ["created_at", "2021-05-10 03:09:54.250715"], ["updated_at", "2021-05-10 03:09:54.250715"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 5]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 143ms (Views: 26.9ms | ActiveRecord: 18.1ms | Allocations: 12736)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:13:08 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 5]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 225ms (Views: 210.3ms | ActiveRecord: 12.6ms | Allocations: 13704)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:13:25 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Test", "description"=>"This is a test", "item_code_parameters_attributes"=>[{"name"=>"Teamy", "regex"=>"\\w{6}"}]}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (6.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test"], ["description", "This is a test"], ["created_at", "2021-05-10 03:13:25.546932"], ["updated_at", "2021-05-10 03:13:25.546932"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (2.2ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\w{6}"], ["name", "Teamy"], ["created_at", "2021-05-10 03:13:25.566544"], ["updated_at", "2021-05-10 03:13:25.566544"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (4.5ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 7], ["item_code_parameter_id", 6], ["created_at", "2021-05-10 03:13:25.583291"], ["updated_at", "2021-05-10 03:13:25.583291"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (19.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 6]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 124ms (Views: 39.7ms | ActiveRecord: 33.2ms | Allocations: 12740)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:14:26 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (1.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 5]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 299ms (Views: 280.7ms | ActiveRecord: 11.6ms | Allocations: 17937)
+
+
+Started DELETE "/products/66/" for ::1 at 2021-05-09 21:14:56 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Test", "description"=>"Good morning", "id"=>"6"}, "id"=>"66"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 6]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (1.9ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (22.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 55ms (Views: 0.7ms | ActiveRecord: 24.7ms | Allocations: 5752)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:15:09 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 185ms (Views: 170.8ms | ActiveRecord: 12.5ms | Allocations: 13704)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:15:52 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning", "item_code_parameters_attributes"=>[{"name"=>"Nate Nelson", "regex"=>"\\w{6}"}]}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (7.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teamy"], ["description", "Good morning"], ["created_at", "2021-05-10 03:15:52.519730"], ["updated_at", "2021-05-10 03:15:52.519730"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (1.5ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\w{6}"], ["name", "Nate Nelson"], ["created_at", "2021-05-10 03:15:52.561067"], ["updated_at", "2021-05-10 03:15:52.561067"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (2.0ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 8], ["item_code_parameter_id", 7], ["created_at", "2021-05-10 03:15:52.576339"], ["updated_at", "2021-05-10 03:15:52.576339"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (15.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 8]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 8]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 7]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 8]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 149ms (Views: 36.4ms | ActiveRecord: 28.3ms | Allocations: 12734)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:18:26 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (2.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (5.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 8]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 8]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 8]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 481ms (Views: 464.0ms | ActiveRecord: 14.9ms | Allocations: 17937)
+
+
+Started DELETE "/products/88/" for ::1 at 2021-05-09 21:18:29 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning", "id"=>"8"}, "id"=>"88"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 8]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (2.6ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (24.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 58ms (Views: 0.5ms | ActiveRecord: 27.9ms | Allocations: 5048)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:19:13 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (10.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (9.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 6]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 257ms (Views: 224.7ms | ActiveRecord: 29.7ms | Allocations: 13704)
+
+
+Started DELETE "/products/77/" for ::1 at 2021-05-09 21:19:17 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Test", "description"=>"This is a test", "id"=>"7"}, "id"=>"77"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 7]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (3.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (22.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 109ms (Views: 0.7ms | ActiveRecord: 31.9ms | Allocations: 5749)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:22:37 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (19.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 1252ms (Views: 1138.8ms | ActiveRecord: 32.8ms | Allocations: 9479)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:22:49 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning", "item_code_parameters_attributes"=>[{"name"=>"Teamy", "regex"=>"l;kasjdfl;kasjdf;lkasdjf"}]}}
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (8.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teamy"], ["description", "Good morning"], ["created_at", "2021-05-10 03:22:49.052195"], ["updated_at", "2021-05-10 03:22:49.052195"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (1.1ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "l;kasjdfl;kasjdf;lkasdjf"], ["name", "Teamy"], ["created_at", "2021-05-10 03:22:49.110546"], ["updated_at", "2021-05-10 03:22:49.110546"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (1.0ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 9], ["item_code_parameter_id", 8], ["created_at", "2021-05-10 03:22:49.129535"], ["updated_at", "2021-05-10 03:22:49.129535"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 9]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 9]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 8]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 9]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 158ms (Views: 25.3ms | ActiveRecord: 24.6ms | Allocations: 12737)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:23:14 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 9]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 9]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 9]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 8]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 198ms (Views: 176.7ms | ActiveRecord: 12.0ms | Allocations: 13706)
+
+
+Started DELETE "/products/99/" for ::1 at 2021-05-09 21:23:18 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning", "id"=>"9"}, "id"=>"99"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 9]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (7.9ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (80.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 123ms (Views: 0.6ms | ActiveRecord: 89.1ms | Allocations: 4606)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:25:20 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (12.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 1115ms (Views: 1036.3ms | ActiveRecord: 22.6ms | Allocations: 9475)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:25:34 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Nathan R Nelson", "description"=>";lskjdf;asldkfjas;ldf", "item_code_parameters_attributes"=>[{"name"=>"Teamy", "regex"=>";lkjfsdlkjsfdlkj;"}]}}
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (7.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Nathan R Nelson"], ["description", ";lskjdf;asldkfjas;ldf"], ["created_at", "2021-05-10 03:25:34.187600"], ["updated_at", "2021-05-10 03:25:34.187600"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (1.2ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", ";lkjfsdlkjsfdlkj;"], ["name", "Teamy"], ["created_at", "2021-05-10 03:25:34.242396"], ["updated_at", "2021-05-10 03:25:34.242396"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (5.7ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 10], ["item_code_parameter_id", 9], ["created_at", "2021-05-10 03:25:34.266241"], ["updated_at", "2021-05-10 03:25:34.266241"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (18.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 10]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 10]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 9]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 10]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 208ms (Views: 43.8ms | ActiveRecord: 36.6ms | Allocations: 13173)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:26:00 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 10]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 10]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 10]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 9]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 244ms (Views: 236.7ms | ActiveRecord: 5.4ms | Allocations: 13705)
+
+
+Started DELETE "/products/1010/" for ::1 at 2021-05-09 21:26:03 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Nathan R Nelson", "description"=>";lskjdf;asldkfjas;ldf", "id"=>"10"}, "id"=>"1010"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 10]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (6.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (21.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 55ms (Views: 0.7ms | ActiveRecord: 28.0ms | Allocations: 5751)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:26:53 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 133ms (Views: 123.8ms | ActiveRecord: 4.9ms | Allocations: 9473)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:27:03 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Nathan R Nelson", "description"=>"Hello World"}}
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (1.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Nathan R Nelson"], ["description", "Hello World"], ["created_at", "2021-05-10 03:27:03.343839"], ["updated_at", "2021-05-10 03:27:03.343839"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (24.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 223ms (Views: 26.5ms | ActiveRecord: 29.6ms | Allocations: 8559)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:27:08 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (2.0ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 137ms (Views: 126.3ms | ActiveRecord: 7.2ms | Allocations: 12409)
+
+
+Started DELETE "/products/1111/" for ::1 at 2021-05-09 21:27:11 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Nathan R Nelson", "description"=>"Hello World", "id"=>"11"}, "id"=>"1111"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 11]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (1.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (12.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 46ms (Views: 0.7ms | ActiveRecord: 14.5ms | Allocations: 5752)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:28:20 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Nathan Nelson", "description"=>"Yet another Test", "item_code_parameters_attributes"=>[{"name"=>"Teamy", "regex"=>"\\w{6}"}]}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (2.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Nathan Nelson"], ["description", "Yet another Test"], ["created_at", "2021-05-10 03:28:20.789432"], ["updated_at", "2021-05-10 03:28:20.789432"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (3.0ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\w{6}"], ["name", "Teamy"], ["created_at", "2021-05-10 03:28:20.817594"], ["updated_at", "2021-05-10 03:28:20.817594"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (0.6ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 12], ["item_code_parameter_id", 10], ["created_at", "2021-05-10 03:28:20.837314"], ["updated_at", "2021-05-10 03:28:20.837314"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (14.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 10]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 155ms (Views: 48.3ms | ActiveRecord: 22.4ms | Allocations: 13107)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:28:37 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 10]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 253ms (Views: 245.4ms | ActiveRecord: 4.8ms | Allocations: 13705)
+
+
+Started DELETE "/products/1212/" for ::1 at 2021-05-09 21:28:41 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Nathan Nelson", "description"=>"Yet another Test", "id"=>"12"}, "id"=>"1212"}
+  [1m[36mProduct Load (8.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 12]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (11.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (33.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 100ms (Views: 0.4ms | ActiveRecord: 54.2ms | Allocations: 5751)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:28:47 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.8ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 86ms (Views: 80.7ms | ActiveRecord: 3.6ms | Allocations: 9473)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:30:58 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (9.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.8ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 1992ms (Views: 1907.6ms | ActiveRecord: 18.1ms | Allocations: 9478)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:31:05 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning", "item_code_parameters_attributes"=>[{"name"=>"Teamy", "regex"=>"Hello World"}]}}
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (9.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teamy"], ["description", "Good morning"], ["created_at", "2021-05-10 03:31:06.062518"], ["updated_at", "2021-05-10 03:31:06.062518"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (1.5ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "Hello World"], ["name", "Teamy"], ["created_at", "2021-05-10 03:31:06.209110"], ["updated_at", "2021-05-10 03:31:06.209110"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (1.2ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 13], ["item_code_parameter_id", 11], ["created_at", "2021-05-10 03:31:06.293520"], ["updated_at", "2021-05-10 03:31:06.293520"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (13.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 11]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 702ms (Views: 195.6ms | ActiveRecord: 30.3ms | Allocations: 13636)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:31:38 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (1.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 11]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 851ms (Views: 803.5ms | ActiveRecord: 9.4ms | Allocations: 13706)
+
+
+Started DELETE "/products/1313/" for ::1 at 2021-05-09 21:31:42 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Good morning", "id"=>"13"}, "id"=>"1313"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 13]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (5.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (16.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 57ms (Views: 1.3ms | ActiveRecord: 22.7ms | Allocations: 5751)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:31:49 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Hello World"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (2.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teamy"], ["description", "Hello World"], ["created_at", "2021-05-10 03:31:49.886234"], ["updated_at", "2021-05-10 03:31:49.886234"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 14]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 14]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 14]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 14]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 82ms (Views: 33.2ms | ActiveRecord: 15.5ms | Allocations: 8405)
+
+
+Started DELETE "/products/1414/" for ::1 at 2021-05-09 21:31:52 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Hello World", "id"=>"14"}, "id"=>"1414"}
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 14]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (3.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (28.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 61ms (Views: 0.5ms | ActiveRecord: 32.6ms | Allocations: 5752)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:32:02 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Hello World", "item_code_parameters_attributes"=>[{"name"=>"Test", "regex"=>"l;kasjdfl;kasjdf;lkasdjf"}]}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (3.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teamy"], ["description", "Hello World"], ["created_at", "2021-05-10 03:32:02.853807"], ["updated_at", "2021-05-10 03:32:02.853807"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (0.7ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "l;kasjdfl;kasjdf;lkasdjf"], ["name", "Test"], ["created_at", "2021-05-10 03:32:02.872106"], ["updated_at", "2021-05-10 03:32:02.872106"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (0.7ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 15], ["item_code_parameter_id", 12], ["created_at", "2021-05-10 03:32:02.888643"], ["updated_at", "2021-05-10 03:32:02.888643"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (16.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (2.0ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 15]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 15]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 12]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 15]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 163ms (Views: 76.2ms | ActiveRecord: 24.7ms | Allocations: 13173)
+
+
+Started DELETE "/products/1515/" for ::1 at 2021-05-09 21:32:16 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teamy", "description"=>"Hello World", "id"=>"15"}, "id"=>"1515"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 15]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (1.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (15.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 73ms (Views: 0.8ms | ActiveRecord: 18.1ms | Allocations: 5755)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 21:33:55 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teddy Bear", "description"=>"This is a Teddy Bear", "item_code_parameters_attributes"=>[{"name"=>"Unique ID", "regex"=>"\\w{9}"}]}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (3.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teddy Bear"], ["description", "This is a Teddy Bear"], ["created_at", "2021-05-10 03:33:55.682022"], ["updated_at", "2021-05-10 03:33:55.682022"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (0.5ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\w{9}"], ["name", "Unique ID"], ["created_at", "2021-05-10 03:33:55.698498"], ["updated_at", "2021-05-10 03:33:55.698498"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (0.5ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 16], ["item_code_parameter_id", 13], ["created_at", "2021-05-10 03:33:55.713473"], ["updated_at", "2021-05-10 03:33:55.713473"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (25.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 16]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 16]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 13]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (8.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 16]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 142ms (Views: 44.8ms | ActiveRecord: 38.8ms | Allocations: 13211)
+
+
+Started DELETE "/products/1616/" for ::1 at 2021-05-09 21:34:07 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teddy Bear", "description"=>"This is a Teddy Bear", "id"=>"16"}, "id"=>"1616"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 16]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (1.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 50ms (Views: 0.4ms | ActiveRecord: 13.3ms | Allocations: 5751)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 21:34:14 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 87ms (Views: 82.3ms | ActiveRecord: 3.3ms | Allocations: 9473)
+
+

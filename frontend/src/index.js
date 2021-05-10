@@ -1,9 +1,9 @@
-// Product.retrieve()
+let productList
 async function createProductList(){
     const ul = createEl("ul", null, document.querySelector("aside"))
     const products = await Product.retrieve()
     const ids = products.map(p=>p.id)
-    const productList = new ProductList(ul,ids)
+    productList = new ProductList(ul,ids)
     productList.name = "Products"
     requestAnimationFrame(()=>productList.animateOn())
 } 
@@ -63,6 +63,7 @@ function addItemParam(fh, parent){
 }
 
 function featureProduct(product){
+    console.log(product)
     main.innerHTML = ""
     const wrapper = createEl("div", {class: "show"}, main)
     const titleCard = createEl("div", {class: "title-show"}, wrapper)
@@ -73,6 +74,7 @@ function featureProduct(product){
     const buttonGroup = createEl("div", {class: "button-group"}, wrapper)
     const closeBtn = createEl("button", {class: "btn btn-flat", type: "button"}, buttonGroup)
     closeBtn.innerText = "CLOSE"
+    closeBtn.addEventListener("click", ()=>{closeProduct(product)})
     const deleteBtn = createEl("button", {class: "btn btn-flat", type: "button"}, buttonGroup)
     deleteBtn.innerText = "DELETE"
     deleteBtn.addEventListener("click", ()=>{deleteProduct(product)})
@@ -80,8 +82,18 @@ function featureProduct(product){
     populateItemTable(product, wrapper)
 }
 
-function deleteProduct(product){
-    product.del
+function closeProduct(product){
+    productList.addItem(product.id)
+    productList.animateOn()
+    main.innerHTML = ""
+    createNewProductForm()
+}
+
+async function deleteProduct(product){
+    
+    const res = await product.destroy()
+    main.innerHTML = ""
+    createNewProductForm()
 }
 
 function createItemForm(product, wrapper){

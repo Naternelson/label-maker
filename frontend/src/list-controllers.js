@@ -15,6 +15,7 @@ class ProductListItem extends ListItemController{
         super(list)
         this.product = Product.instances.find(instance=>instance.id == id)
         if(!this.product){
+            
             console.error("Product with an id of", id, "not found!")
             this.list.removeItem(this)
             return
@@ -27,7 +28,7 @@ class ProductListItem extends ListItemController{
         this.setBody()
     }
     feature(){
-        // debugger
+        // 
         featureProduct(this.product)
         this.list.removeItem(this)
         
