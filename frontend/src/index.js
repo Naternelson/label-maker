@@ -37,8 +37,9 @@ async function createProductList(){
 // }
 
 const main = document.querySelector("main")
-const formWrapper = createEl("div", {class: "form-wrapper"}, main)
+
 function createNewProductForm(){
+    const formWrapper = createEl("div", {class: "form-wrapper"}, main)
     const formHandler = new FormBuilder(formWrapper)
     formHandler.createMainModel("product")
     const title = createEl("div", {class: "form-title"}, formHandler.form)
@@ -51,6 +52,7 @@ function createNewProductForm(){
     addNewParamBtn.addEventListener("click", ()=>{addItemParam(formHandler, itemParamWrapper)})
     const submit = createEl("button", {type: "submit", class: "btn"}, formHandler.form)
     submit.innerText = "Add Product"
+    formHandler.afterSubmission = featureProduct
 }
 
 function addItemParam(fh, parent){
@@ -59,6 +61,45 @@ function addItemParam(fh, parent){
     fh.mapInput("regex",{type: "text", name: "regex"}, nestedModel, parent)
     createEl("hr",null, parent)
 }
+
+function featureProduct(product){
+    main.innerHTML = ""
+    const wrapper = createEl("div", {class: "show"}, main)
+    const titleCard = createEl("div", {class: "title-show"}, wrapper)
+    const title = createEl("h1", null, titleCard)
+    title.innerText = toTitleCase(product.name)
+    const paramCount = createEl("div", {class: "title-tag"}, titleCard)
+    paramCount.innerText = product.itemCodeParameters.length.toString() + " Item Code Parameters"
+    const buttonGroup = createEl("div", {class: "button-group"}, wrapper)
+    createItemForm(product, wrapper)
+    populateItemTable(product, wrapper)
+}
+
+function createItemForm(product, wrapper){
+    const formWrapper = createEl("div", {class: "form-wrapper"}, wrapper)
+    const formHandler = new FormBuilder(formWrapper)
+    formHandler.createMainModel("item")
+
+    const nestedModel = {modelProperty: 'product', type: 'product', instance: product, attributes: []}
+    formHandler.included.push(nestedModel)
+
+    const title = createEl("div", {class: "form-title"}, formHandler.form)
+    title.innerText = "Add Item"
+
+    const parent = createEl("div", {name: "item-codes"}, formHandler.form)
+    for(let param of product.itemCodeParameters){
+        const nestedModel = formHandler.nestModel("itemCodes", "ItemCode")
+        nestedModel.itemCodeParameter = param 
+        formHandler.mapInput("itemValue",{type: "text", name: param.name, pattern: param.regex}, nestedModel, parent)
+    }
+    const submit = createEl("button", {type: "submit", class: "btn"}, formHandler.form)
+    submit.innerText = "Add Product"
+    
+
+    
+    createEl("hr",null, parent)
+}
+function populateItemTable(){}
 
 
 createProductList()

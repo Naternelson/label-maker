@@ -126,7 +126,7 @@ class FormBuilder{
         const res = await this.model.instance[action](null, toInclude)
         alert("Successful " + action)
         console.log(res)
-        this.afterSubmission()
+        this.afterSubmission(this.model.instance)
     }
     afterSubmission(){}
 }

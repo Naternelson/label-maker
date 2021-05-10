@@ -9,6 +9,15 @@
     /* align-content: center; */
     /* background-color: white;  */
 }
+.show .form-wrapper{
+    min-width: 40em;
+    /* background-color: blue; */
+    justify-content: start;
+}
+
+.show form .form-title {
+    font-size: 20px;
+}
 
 form {
     /* width: 20em; */

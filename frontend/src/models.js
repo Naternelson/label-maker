@@ -9,6 +9,11 @@ class Item extends Model{
     static instances = []
 }
 
+class ItemCode extends Model{
+    static instances = []
+}
+modelProperties(ItemCode, ["itemValue", "itemCodeParameter"])
+
 class ItemCodeParameter extends Model {
     static resource = "item_code_parameters/"
     static instances = []

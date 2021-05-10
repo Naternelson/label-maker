@@ -28,12 +28,14 @@ class ProductListItem extends ListItemController{
     }
     feature(){
         // debugger
-        const el = this.listItemElement
-        const main = document.querySelector("main")
-        const featureZone = findOrCreateElementById("feature", main, "div")
-        const fzBox = featureZone.getBoundingClientRect()
-        const currentBox = el.getBoundingClientRect()
-        featureZone.append(el)
+        featureProduct(this.product)
+        this.list.removeItem(this)
+        
+        // const main = document.querySelector("main")
+        // const featureZone = findOrCreateElementById("feature", main, "div")
+        // const fzBox = featureZone.getBoundingClientRect()
+        // const currentBox = el.getBoundingClientRect()
+        // featureZone.append(el)
     }
 
     setTitle(){this.title = this.product.name}

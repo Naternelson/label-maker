@@ -29,7 +29,7 @@ class Model {
         const options = {
             method: 'POST',
             headers: {...c.headers},
-            body: JSON.stringify(c.createBody(this, attributes, include))
+            body: JSON.stringify(packageBody(this, include))//c.createBody(this, attributes, include))
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
