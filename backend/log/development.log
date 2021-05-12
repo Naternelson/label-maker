@@ -29139,3 +29139,280 @@ Processing by ItemsController#create as */*
   ↳ app/models/product.rb:10:in `has_item_params?'
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
   ↳ (pry):5:in `create'
+No template found for ItemsController#create, rendering head :no_content
+Completed 204 No Content in 360895ms (ActiveRecord: 4.2ms | Allocations: 19637)
+
+
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "item_code_parameters"[0m
+  [1m[35m (132.7ms)[0m  [1m[35mCREATE TABLE "item_code_parameters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "regex" varchar, "unique" boolean, "presence" boolean, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "item_codes"[0m
+  [1m[35m (83.4ms)[0m  [1m[35mCREATE TABLE "item_codes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "item_code_parameter_id" integer, "item_id" integer, "item_value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "items"[0m
+  [1m[35m (96.1ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "product_item_parameters"[0m
+  [1m[35m (140.1ms)[0m  [1m[35mCREATE TABLE "product_item_parameters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "item_code_parameter_id" integer, "alias" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (86.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (32.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (58.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210503181224)[0m
+  [1m[35m (18.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210503174803),
+(20210503174823),
+(20210503174837),
+(20210503174848);
+
+[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (6.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-10 03:55:54.513892"], ["updated_at", "2021-05-10 03:55:54.513892"]]
+  [1m[36mTRANSACTION (30.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "98f451e09c317e7cf29f55d46256c0c610ccf238"], ["created_at", "2021-05-10 03:55:54.579508"], ["updated_at", "2021-05-10 03:55:54.579508"]]
+  [1m[36mTRANSACTION (15.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "item_code_parameters"[0m
+  [1m[35m (21.8ms)[0m  [1m[35mCREATE TABLE "item_code_parameters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "regex" varchar, "unique" boolean, "presence" boolean, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "item_codes"[0m
+  [1m[35m (21.9ms)[0m  [1m[35mCREATE TABLE "item_codes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "item_code_parameter_id" integer, "item_id" integer, "item_value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "items"[0m
+  [1m[35m (24.4ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "product_item_parameters"[0m
+  [1m[35m (17.5ms)[0m  [1m[35mCREATE TABLE "product_item_parameters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "item_code_parameter_id" integer, "alias" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (19.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (17.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210503181224)[0m
+  [1m[35m (32.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210503174803),
+(20210503174823),
+(20210503174837),
+(20210503174848);
+
+[0m
+  [1m[35m (27.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-10 03:55:54.864542"], ["updated_at", "2021-05-10 03:55:54.864542"]]
+  [1m[36mTRANSACTION (18.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-05-10 03:55:54.923275"], ["key", "environment"]]
+  [1m[36mTRANSACTION (21.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "98f451e09c317e7cf29f55d46256c0c610ccf238"], ["created_at", "2021-05-10 03:55:54.966839"], ["updated_at", "2021-05-10 03:55:54.966839"]]
+  [1m[36mTRANSACTION (14.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Dummy Product"], ["description", "This product should test all of its model associations"], ["created_at", "2021-05-10 03:55:55.040948"], ["updated_at", "2021-05-10 03:55:55.040948"]]
+  [1m[36mTRANSACTION (16.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ? AND "item_code_parameters"."regex" = ? AND "item_code_parameters"."unique" = ? AND "item_code_parameters"."presence" = ? AND "item_code_parameters"."name" = ? LIMIT ?[0m  [["product_id", 1], ["regex", "\\A\\d{9}\\z"], ["unique", 1], ["presence", 1], ["name", "UDI"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItemCodeParameter Create (1.1ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "unique", "presence", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["regex", "\\A\\d{9}\\z"], ["unique", 1], ["presence", 1], ["name", "UDI"], ["created_at", "2021-05-10 03:55:55.113254"], ["updated_at", "2021-05-10 03:55:55.113254"]]
+  [1m[36mProductItemParameter Create (3.6ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["item_code_parameter_id", 1], ["created_at", "2021-05-10 03:55:55.138222"], ["updated_at", "2021-05-10 03:55:55.138222"]]
+  [1m[36mTRANSACTION (15.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCodeParameter Load (0.3ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ? AND "item_code_parameters"."regex" = ? AND "item_code_parameters"."unique" = ? AND "item_code_parameters"."presence" = ? AND "item_code_parameters"."name" = ? LIMIT ?[0m  [["product_id", 1], ["regex", "\\A\\w{6}\\z"], ["unique", 1], ["presence", 1], ["name", "Device ID"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItemCodeParameter Create (1.0ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "unique", "presence", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["regex", "\\A\\w{6}\\z"], ["unique", 1], ["presence", 1], ["name", "Device ID"], ["created_at", "2021-05-10 03:55:55.169409"], ["updated_at", "2021-05-10 03:55:55.169409"]]
+  [1m[36mProductItemParameter Create (0.5ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 1], ["item_code_parameter_id", 2], ["created_at", "2021-05-10 03:55:55.180039"], ["updated_at", "2021-05-10 03:55:55.180039"]]
+  [1m[36mTRANSACTION (17.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Create (0.7ms)[0m  [1m[32mINSERT INTO "items" ("product_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["product_id", 1], ["created_at", "2021-05-10 03:55:55.220555"], ["updated_at", "2021-05-10 03:55:55.220555"]]
+  [1m[36mTRANSACTION (106.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCode Load (0.5ms)[0m  [1m[34mSELECT "item_codes".* FROM "item_codes" WHERE "item_codes"."item_id" = ? AND "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_value" = ? LIMIT ?[0m  [["item_id", 1], ["item_code_parameter_id", 1], ["item_value", "123456789"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/product.rb:10:in `has_item_params?'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/models/product.rb:10:in `has_item_params?'
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ? AND "products"."id" = ? LIMIT ?[0m  [["item_code_parameter_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mItemCode Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_value" = ? LIMIT ?[0m  [["item_value", "123456789"], ["LIMIT", 1]]
+  [1m[36mItemCode Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_id" = ? LIMIT ?[0m  [["item_code_parameter_id", 1], ["item_id", 1], ["LIMIT", 1]]
+  [1m[36mItemCode Create (4.5ms)[0m  [1m[32mINSERT INTO "item_codes" ("item_code_parameter_id", "item_id", "item_value", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["item_code_parameter_id", 1], ["item_id", 1], ["item_value", "123456789"], ["created_at", "2021-05-10 03:55:55.408837"], ["updated_at", "2021-05-10 03:55:55.408837"]]
+  [1m[36mTRANSACTION (115.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCode Load (0.3ms)[0m  [1m[34mSELECT "item_codes".* FROM "item_codes" WHERE "item_codes"."item_id" = ? AND "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_value" = ? LIMIT ?[0m  [["item_id", 1], ["item_code_parameter_id", 2], ["item_value", "123456"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mProduct Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ? AND "products"."id" = ? LIMIT ?[0m  [["item_code_parameter_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mItemCode Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_value" = ? LIMIT ?[0m  [["item_value", "123456"], ["LIMIT", 1]]
+  [1m[36mItemCode Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_id" = ? LIMIT ?[0m  [["item_code_parameter_id", 2], ["item_id", 1], ["LIMIT", 1]]
+  [1m[36mItemCode Create (8.1ms)[0m  [1m[32mINSERT INTO "item_codes" ("item_code_parameter_id", "item_id", "item_value", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["item_code_parameter_id", 2], ["item_id", 1], ["item_value", "123456"], ["created_at", "2021-05-10 03:55:55.574785"], ["updated_at", "2021-05-10 03:55:55.574785"]]
+  [1m[36mTRANSACTION (22.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Create (0.6ms)[0m  [1m[32mINSERT INTO "items" ("product_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["product_id", 1], ["created_at", "2021-05-10 03:55:55.613126"], ["updated_at", "2021-05-10 03:55:55.613126"]]
+  [1m[36mTRANSACTION (15.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCode Load (0.3ms)[0m  [1m[34mSELECT "item_codes".* FROM "item_codes" WHERE "item_codes"."item_id" = ? AND "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_value" = ? LIMIT ?[0m  [["item_id", 2], ["item_code_parameter_id", 1], ["item_value", "234567890"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ? AND "products"."id" = ? LIMIT ?[0m  [["item_code_parameter_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mItemCode Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_value" = ? LIMIT ?[0m  [["item_value", "234567890"], ["LIMIT", 1]]
+  [1m[36mItemCode Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_id" = ? LIMIT ?[0m  [["item_code_parameter_id", 1], ["item_id", 2], ["LIMIT", 1]]
+  [1m[36mItemCode Create (8.3ms)[0m  [1m[32mINSERT INTO "item_codes" ("item_code_parameter_id", "item_id", "item_value", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["item_code_parameter_id", 1], ["item_id", 2], ["item_value", "234567890"], ["created_at", "2021-05-10 03:55:55.657057"], ["updated_at", "2021-05-10 03:55:55.657057"]]
+  [1m[36mTRANSACTION (20.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCode Load (0.3ms)[0m  [1m[34mSELECT "item_codes".* FROM "item_codes" WHERE "item_codes"."item_id" = ? AND "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_value" = ? LIMIT ?[0m  [["item_id", 2], ["item_code_parameter_id", 2], ["item_value", "234567"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mProduct Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ? AND "products"."id" = ? LIMIT ?[0m  [["item_code_parameter_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mItemCode Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_value" = ? LIMIT ?[0m  [["item_value", "234567"], ["LIMIT", 1]]
+  [1m[36mItemCode Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_id" = ? LIMIT ?[0m  [["item_code_parameter_id", 2], ["item_id", 2], ["LIMIT", 1]]
+  [1m[36mItemCode Create (30.5ms)[0m  [1m[32mINSERT INTO "item_codes" ("item_code_parameter_id", "item_id", "item_value", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["item_code_parameter_id", 2], ["item_id", 2], ["item_value", "234567"], ["created_at", "2021-05-10 03:55:55.706247"], ["updated_at", "2021-05-10 03:55:55.706247"]]
+  [1m[36mTRANSACTION (22.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Create (4.4ms)[0m  [1m[32mINSERT INTO "items" ("product_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["product_id", 1], ["created_at", "2021-05-10 03:55:55.766727"], ["updated_at", "2021-05-10 03:55:55.766727"]]
+  [1m[36mTRANSACTION (25.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCode Load (0.3ms)[0m  [1m[34mSELECT "item_codes".* FROM "item_codes" WHERE "item_codes"."item_id" = ? AND "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_value" = ? LIMIT ?[0m  [["item_id", 3], ["item_code_parameter_id", 1], ["item_value", "345678901"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mProduct Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ? AND "products"."id" = ? LIMIT ?[0m  [["item_code_parameter_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mItemCode Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_value" = ? LIMIT ?[0m  [["item_value", "345678901"], ["LIMIT", 1]]
+  [1m[36mItemCode Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_id" = ? LIMIT ?[0m  [["item_code_parameter_id", 1], ["item_id", 3], ["LIMIT", 1]]
+  [1m[36mItemCode Create (4.8ms)[0m  [1m[32mINSERT INTO "item_codes" ("item_code_parameter_id", "item_id", "item_value", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["item_code_parameter_id", 1], ["item_id", 3], ["item_value", "345678901"], ["created_at", "2021-05-10 03:55:55.845031"], ["updated_at", "2021-05-10 03:55:55.845031"]]
+  [1m[36mTRANSACTION (21.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mItemCode Load (0.4ms)[0m  [1m[34mSELECT "item_codes".* FROM "item_codes" WHERE "item_codes"."item_id" = ? AND "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_value" = ? LIMIT ?[0m  [["item_id", 3], ["item_code_parameter_id", 2], ["item_value", "345678"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mProduct Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ? AND "products"."id" = ? LIMIT ?[0m  [["item_code_parameter_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/item_code.rb:14:in `matching_parameters'
+  [1m[36mItemCode Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_value" = ? LIMIT ?[0m  [["item_value", "345678"], ["LIMIT", 1]]
+  [1m[36mItemCode Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "item_codes" WHERE "item_codes"."item_code_parameter_id" = ? AND "item_codes"."item_id" = ? LIMIT ?[0m  [["item_code_parameter_id", 2], ["item_id", 3], ["LIMIT", 1]]
+  [1m[36mItemCode Create (3.9ms)[0m  [1m[32mINSERT INTO "item_codes" ("item_code_parameter_id", "item_id", "item_value", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["item_code_parameter_id", 2], ["item_id", 3], ["item_value", "345678"], ["created_at", "2021-05-10 03:55:55.933644"], ["updated_at", "2021-05-10 03:55:55.933644"]]
+  [1m[36mTRANSACTION (19.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (1.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Secondary Product"], ["description", "This product should be able to add params and items"], ["created_at", "2021-05-10 03:55:55.964248"], ["updated_at", "2021-05-10 03:55:55.964248"]]
+  [1m[36mTRANSACTION (16.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/1-corp-testing/orders" for ::1 at 2021-05-09 22:04:00 -0600
+Started GET "/products/" for ::1 at 2021-05-09 22:04:00 -0600
+  [1m[35m (20.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/1-corp-testing/orders"):
+  
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (4.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.7ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (174.9ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (9.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 6989ms (Views: 853.5ms | ActiveRecord: 225.4ms | Allocations: 42163)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 22:05:20 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (30.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.4ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 520ms (Views: 403.3ms | ActiveRecord: 35.8ms | Allocations: 9495)
+
+
+Started POST "/products/" for ::1 at 2021-05-09 22:06:17 -0600
+Processing by ProductsController#create as */*
+  Parameters: {"product"=>{"name"=>"Teddy Bear", "description"=>"And this teddy bear is for demonstration purposes", "item_code_parameters_attributes"=>[{"name"=>"Unique Teddy Code", "regex"=>"\\d{9}"}]}}
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProduct Create (47.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teddy Bear"], ["description", "And this teddy bear is for demonstration purposes"], ["created_at", "2021-05-10 04:06:17.240482"], ["updated_at", "2021-05-10 04:06:17.240482"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Create (1.8ms)[0m  [1m[32mINSERT INTO "item_code_parameters" ("regex", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["regex", "\\d{9}"], ["name", "Unique Teddy Code"], ["created_at", "2021-05-10 04:06:17.502957"], ["updated_at", "2021-05-10 04:06:17.502957"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mProductItemParameter Create (0.9ms)[0m  [1m[32mINSERT INTO "product_item_parameters" ("product_id", "item_code_parameter_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["product_id", 3], ["item_code_parameter_id", 3], ["created_at", "2021-05-10 04:06:19.396565"], ["updated_at", "2021-05-10 04:06:19.396565"]]
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (379.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:10:in `create'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+  [1m[36mItem Load (10.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:12:in `create'
+Completed 200 OK in 3031ms (Views: 177.2ms | ActiveRecord: 462.2ms | Allocations: 17803)
+
+
+Started DELETE "/products/33/" for ::1 at 2021-05-09 22:06:25 -0600
+Processing by ProductsController#destroy as */*
+  Parameters: {"product"=>{"name"=>"Teddy Bear", "description"=>"And this teddy bear is for demonstration purposes", "id"=>"3"}, "id"=>"33"}
+  [1m[36mProduct Load (7.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:41:in `find_product'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 3]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mProduct Destroy (13.0ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+  [1m[36mTRANSACTION (62.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `destroy'
+Completed 200 OK in 192ms (Views: 0.6ms | ActiveRecord: 86.4ms | Allocations: 5974)
+
+
+Started GET "/products/" for ::1 at 2021-05-09 22:06:31 -0600
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.6ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "products"."id" FROM "products" INNER JOIN "product_item_parameters" ON "products"."id" = "product_item_parameters"."product_id" WHERE "product_item_parameters"."item_code_parameter_id" = ?[0m  [["item_code_parameter_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "item_code_parameters"."id" FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "items"."id" FROM "items" WHERE "items"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mItemCodeParameter Load (0.5ms)[0m  [1m[34mSELECT "item_code_parameters".* FROM "item_code_parameters" INNER JOIN "product_item_parameters" ON "item_code_parameters"."id" = "product_item_parameters"."item_code_parameter_id" WHERE "product_item_parameters"."product_id" = ?[0m  [["product_id", 2]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 253ms (Views: 245.4ms | ActiveRecord: 5.3ms | Allocations: 9477)
+
+
