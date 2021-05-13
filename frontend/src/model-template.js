@@ -12,7 +12,14 @@ class Model {
     relate(relationships){
         const c = this.constructor
         for(let r in relationships){
-            this[toLowerCamel(r)] =  relationships[r].data.map(row=> c.findOrCreateById(row.type, row.id))
+            debugger
+            if(Array.isArray(relationships[r].data)){
+                this[toLowerCamel(r)] =  relationships[r].data.map(row=> c.findOrCreateById(row.type, row.id))
+            } else {
+                const type = relationships[r].data.type
+                const id = relationships[r].data.id
+                this[toLowerCamel(r)] = c.findOrCreateById(type, id)
+            }
         }
     }
 
@@ -75,20 +82,7 @@ class Model {
     static resource = ""
     static headers =  { 'Content-Type': 'application/json'}
     static instances = []
-    // static createBody(obj, attributes, include=[]){ 
-    //     //Object is a JS Model Instance, and attributes is an array of attributes to send. If blank, all attributes are sent. 
-    //     //Server Attributes are identified with a '_' in front. 
-    //     //Include is reserved for relationship models to include
-    //     const body = {}
-    //     if(obj.id) body.id = obj.id
-    //     if(attributes){for(let a of attributes){body[a] = obj[`_${a}`]}}
-    //     if(!attributes){for(let p in obj){if(p.charAt(0)=="_"){body[toSnakeCase(p.slice(1))] = obj[p]}}}
-    //     for(let model of include){
-    //         body[toSnakeCase(model)] = obj[model].map(instance=>this.createBody(instance)) 
-    //     }
-    //     console.log(body)
-    //     return body 
-    // }
+
     static async retrieve(id){ 
         //Retrieves one or all data from the server with a GET Request
         let url = this.root + this.resource
@@ -117,11 +111,9 @@ class Model {
         //If We already have an instance of this object, update its attributes
         if(!ins){ins = new this(data); this.instances.push(ins)} 
         //If not create a new object instance
-        console.log(ins)
         return ins
     }
     static removeInstance(i){
-        debugger
         const arr = this.instances
         const index = arr.indexOf(i)
         this.instances.splice(index,1)

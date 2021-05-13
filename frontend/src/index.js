@@ -1,4 +1,6 @@
 let productList
+const main = document.querySelector("main")
+
 async function createProductList(){
     const ul = createEl("ul", null, document.querySelector("aside"))
     const products = await Product.retrieve()
@@ -8,35 +10,6 @@ async function createProductList(){
     requestAnimationFrame(()=>productList.animateOn())
 } 
 
-// function createNewProductForm(){
-//     const main = document.querySelector("main")
-//     const formWrapper = createEl("div", {class: "form-wrapper"}, main)
-//     const form = new FormBuilder(formWrapper)
-//     form.createInput("text", "name", {"data-model": "Product"})
-//         .createInput("text", "description", {"data-model": "Product"})
-//         .createTitle("Create A New Product")
-//     const newItemCodeParam = form.createBtn(null, "Add Item Code", {class: "btn btn-flat"})
-//     form.createBtn(null, "Submit", {class: "btn"})
-//     form.display()
-// }
-
-
-// async function newProductHandler(e){
-//     e.preventDefault()
-//     const inputs = e.target.form.querySelectorAll("input")
-//     const attributes = {}
-//     inputs.forEach(input=>{ 
-//         attributes[input.name] = input.value})
-//     const product = new Product({attributes})
-//     await product.post()
-//     alert("Product arrived!")
-// }
-
-// function nestForm(formElement, model, ...attributes){
-
-// }
-
-const main = document.querySelector("main")
 
 function createNewProductForm(){
     const formWrapper = createEl("div", {class: "form-wrapper"}, main)
@@ -63,7 +36,6 @@ function addItemParam(fh, parent){
 }
 
 function featureProduct(product){
-    console.log(product)
     main.innerHTML = ""
     const wrapper = createEl("div", {class: "show"}, main)
     const titleCard = createEl("div", {class: "title-show"}, wrapper)
@@ -96,6 +68,7 @@ async function deleteProduct(product){
 }
 
 function createItemForm(product, wrapper){
+    debugger
     const formWrapper = createEl("div", {class: "form-wrapper"}, wrapper)
     const formHandler = new FormBuilder(formWrapper)
     formHandler.createMainModel("item")
@@ -107,16 +80,16 @@ function createItemForm(product, wrapper){
     title.innerText = "Add Item"
 
     const parent = createEl("div", {name: "item-codes"}, formHandler.form)
+
     for(let param of product.itemCodeParameters){
         const nestedModel = formHandler.nestModel("itemCodes", "ItemCode")
-        nestedModel.itemCodeParameter = param 
-        formHandler.mapInput("itemValue",{type: "text", name: param.name, pattern: param.regex}, nestedModel, parent)
+        debugger
+        nestedModel.instance.itemCodeParameterId = param.id
+        formHandler.mapInput("itemValue",{type: "text", name: param.name, pattern: param.regex, "data-item-code-paramater-id": param.id}, nestedModel, parent)
     }
+
     const submit = createEl("button", {type: "submit", class: "btn"}, formHandler.form)
     submit.innerText = "Add Item"
-    
-
-    
     createEl("hr",null, parent)
 }
 function populateItemTable(product){
@@ -130,7 +103,5 @@ function populateItemTable(product){
     // for()
 
 }
-
-
 createProductList()
 createNewProductForm()

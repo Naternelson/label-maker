@@ -12,7 +12,7 @@ class Item extends Model{
 class ItemCode extends Model{
     static instances = []
 }
-modelProperties(ItemCode, ["itemValue", "itemCodeParameter"])
+modelProperties(ItemCode, ["itemValue", "itemCodeParameterId"])
 
 class ItemCodeParameter extends Model {
     static resource = "item_code_parameters/"
