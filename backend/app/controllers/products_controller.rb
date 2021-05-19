@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
 
     def show
         find_product
-        options = {include: [:item_code_parameters, :items]}
+        options = {include: [:item_code_parameters, :items, :item_codes]}
         render json: ProductSerializer.new(@product, options)
     end
 
@@ -38,6 +38,6 @@ class ProductsController < ApplicationController
     end
 
     def find_product
-        @product = Product.find_by_id params[:product][:id]
+        @product = Product.find_by_id params[:id]
     end
 end

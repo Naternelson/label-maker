@@ -4,4 +4,5 @@ class ProductSerializer
   attributes :name, :description
   has_many :item_code_parameters
   has_many :items
+  has_many :item_codes
 end

@@ -29,8 +29,12 @@ class ProductListItem extends ListItemController{
     }
     feature(){
         // 
+        
         featureProduct(this.product)
         this.list.removeItem(this)
+        this.product.update().then(populateItemTable).catch((mes)=>console.error(mes))
+        console.log("Hello World")
+            // populateItemTable(this.product).bind(this))
         
         // const main = document.querySelector("main")
         // const featureZone = findOrCreateElementById("feature", main, "div")

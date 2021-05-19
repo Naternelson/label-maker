@@ -91,7 +91,6 @@ function createItemForm(product, wrapper){
 }
 
 function addItem(item){
-    debugger
     document.querySelector("form").reset()
     const table = document.querySelector(".table")
     const tr = createEl("div", null, table)
@@ -101,6 +100,7 @@ function addItem(item){
     }
 }
 function populateItemTable(product){
+    debugger
     const table = createEl("div", {class: "table"}, document.querySelector(".show"))
     for(let item of product.items) addItem(item)
 
