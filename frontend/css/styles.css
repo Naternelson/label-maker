@@ -113,9 +113,17 @@ button, input{
 button {
     cursor: pointer;
 }
+
+.button-group{
+    display: flex;
+    flex-direction: row;
+}
 .search-bar input {
     border-radius: 0;
     border: 1px solid black;   
     padding: 1.2em;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
 }
  

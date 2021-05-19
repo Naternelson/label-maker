@@ -52,7 +52,6 @@ function capitalize(str) {
 } 
 
 function toCamel(str){
-    console.log(str)
     return str.split("_").map(s=> capitalize(s)).join("")
 }
 

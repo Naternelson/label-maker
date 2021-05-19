@@ -3,6 +3,7 @@ class Model {
     // MODEL INSTANCE METHODS AND PROPERTIES
     //
     constructor({attributes, id, relationships}){
+        
         this.id = id
         if(attributes){for(let a in attributes){this[a] = attributes[a]}}
         this.relate(relationships)
@@ -10,6 +11,7 @@ class Model {
     }
 
     relate(relationships){
+        
         const c = this.constructor
         for(let r in relationships){
             
@@ -40,6 +42,7 @@ class Model {
         }
         const response = await fetch(url, options)
         const obj = await fromJson(response)
+        
         c.buildRelationships(obj)
         
         return c.addInstance(obj.data)

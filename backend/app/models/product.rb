@@ -2,6 +2,7 @@ class Product < ApplicationRecord
     has_many :product_item_parameters
     has_many :item_code_parameters, through: :product_item_parameters
     has_many :items, dependent: :destroy
+    has_many :item_codes, through: :items
     
     validates :name, presence: :true
     accepts_nested_attributes_for :item_code_parameters

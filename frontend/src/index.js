@@ -86,11 +86,13 @@ function createItemForm(product, wrapper){
     const submit = createEl("button", {type: "submit", class: "btn"}, formHandler.form)
     submit.innerText = "Add Item"
     formHandler.afterSubmission = addItem
-    createEl("hr",null, parent)
+    createEl("hr",null, wrapper)
+    createEl("div", {class:"table"}, wrapper )
 }
 
 function addItem(item){
-    document.querySelector(" form").reset()
+    debugger
+    document.querySelector("form").reset()
     const table = document.querySelector(".table")
     const tr = createEl("div", null, table)
     for(let code of item.itemCodes){
@@ -99,7 +101,6 @@ function addItem(item){
     }
 }
 function populateItemTable(product){
-    // document.querySelector(".show").innerHTML = ""
     const table = createEl("div", {class: "table"}, document.querySelector(".show"))
     for(let item of product.items) addItem(item)
 
