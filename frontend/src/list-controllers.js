@@ -28,7 +28,6 @@ class ProductListItem extends ListItemController{
         this.setBody()
     }
     feature(){
-        // this.product.update().then(populateItemTable).catch((mes)=>console.error(mes))
         featureProduct(this.product)
         this.list.removeItem(this)
     }

@@ -54,8 +54,6 @@ function featureProduct(product){
     deleteBtn.innerText = "DELETE"
     deleteBtn.addEventListener("click", ()=>{deleteProduct(product)})
     createItemForm(product, wrapper)
-
-    // populateItemTable(product, wrapper)
 }
 
 function closeProduct(product){
