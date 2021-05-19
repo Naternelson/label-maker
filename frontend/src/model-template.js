@@ -67,7 +67,6 @@ class Model {
         if (!this.id) return 
         const c = this.constructor
         let url = c.root + c.resource + this.id
-        if(this.id) url += `${this.id}/`
         const options = {
             method: 'DELETE',
             headers: {...c.headers},

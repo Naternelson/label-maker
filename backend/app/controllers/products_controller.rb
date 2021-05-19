@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
     def create
         product = Product.create(product_params)
-        options = {include: [:item_code_parameters, :items]}
+        options = {include: [:item_code_parameters, :items, :item_codes]}
         render json: ProductSerializer.new(product, options)
     end
 
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     def destroy
         find_product
         @product.destroy
-        render json: {message: "Product #id #{params[:product][:id]} destroyed" }
+        render json: {message: "Product #id #{params[:id]} destroyed" }
     end
 
     private

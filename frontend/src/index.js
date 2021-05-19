@@ -38,6 +38,7 @@ function addItemParam(fh, parent){
 }
 
 function featureProduct(product){
+    product.update().then(populateItemTable).catch((mes)=>console.error(mes))
     main.innerHTML = ""
     const wrapper = createEl("div", {class: "show"}, main)
     const titleCard = createEl("div", {class: "title-show"}, wrapper)
@@ -53,6 +54,7 @@ function featureProduct(product){
     deleteBtn.innerText = "DELETE"
     deleteBtn.addEventListener("click", ()=>{deleteProduct(product)})
     createItemForm(product, wrapper)
+
     // populateItemTable(product, wrapper)
 }
 
@@ -87,21 +89,22 @@ function createItemForm(product, wrapper){
     submit.innerText = "Add Item"
     formHandler.afterSubmission = addItem
     createEl("hr",null, wrapper)
-    createEl("div", {class:"table"}, wrapper )
 }
 
 function addItem(item){
     document.querySelector("form").reset()
     const table = document.querySelector(".table")
-    const tr = createEl("div", null, table)
+    const tr = createEl("div", {class: "tr"}, table)
     for(let code of item.itemCodes){
         const codeContent = createEl("div", null, tr)
-        code.innerText = code.itemCodeParameter.name + ": " + code["item_value"]
+        codeContent.innerText = code.itemCodeParameter.name + ": " + code["item_value"]
     }
+
 }
 function populateItemTable(product){
-    debugger
     const table = createEl("div", {class: "table"}, document.querySelector(".show"))
+    const tableTitle = createEl("h3", null, table)
+    tableTitle.innerText = "Items"
     for(let item of product.items) addItem(item)
 
 }
