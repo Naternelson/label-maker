@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 
     def create 
         item = Item.create(item_params)
-        binding.pry
         options = {include: [:item_codes, :product]}
         render json: ItemSerializer.new(item, options)
     end

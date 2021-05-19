@@ -12,7 +12,7 @@ class Model {
     relate(relationships){
         const c = this.constructor
         for(let r in relationships){
-            debugger
+            
             if(Array.isArray(relationships[r].data)){
                 this[toLowerCamel(r)] =  relationships[r].data.map(row=> c.findOrCreateById(row.type, row.id))
             } else {

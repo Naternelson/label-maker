@@ -2,10 +2,12 @@ let productList
 const main = document.querySelector("main")
 
 async function createProductList(){
+
     const ul = createEl("ul", null, document.querySelector("aside"))
     const products = await Product.retrieve()
     const ids = products.map(p=>p.id)
     productList = new ProductList(ul,ids)
+    createSearchBar()
     productList.name = "Products"
     requestAnimationFrame(()=>productList.animateOn())
 } 
@@ -51,7 +53,7 @@ function featureProduct(product){
     deleteBtn.innerText = "DELETE"
     deleteBtn.addEventListener("click", ()=>{deleteProduct(product)})
     createItemForm(product, wrapper)
-    populateItemTable(product, wrapper)
+    // populateItemTable(product, wrapper)
 }
 
 function closeProduct(product){
@@ -68,39 +70,38 @@ async function deleteProduct(product){
 }
 
 function createItemForm(product, wrapper){
-    debugger
     const formWrapper = createEl("div", {class: "form-wrapper"}, wrapper)
     const formHandler = new FormBuilder(formWrapper)
     formHandler.createMainModel("item")
-
     const nestedModel = {modelProperty: 'product', type: 'product', instance: product, attributes: []}
     formHandler.included.push(nestedModel)
-
     const title = createEl("div", {class: "form-title"}, formHandler.form)
     title.innerText = "Add Item"
-
     const parent = createEl("div", {name: "item-codes"}, formHandler.form)
-
     for(let param of product.itemCodeParameters){
         const nestedModel = formHandler.nestModel("itemCodes", "ItemCode")
-        debugger
         nestedModel.instance.itemCodeParameterId = param.id
         formHandler.mapInput("itemValue",{type: "text", name: param.name, pattern: param.regex, "data-item-code-paramater-id": param.id}, nestedModel, parent)
     }
-
     const submit = createEl("button", {type: "submit", class: "btn"}, formHandler.form)
     submit.innerText = "Add Item"
+    formHandler.afterSubmission = addItem
     createEl("hr",null, parent)
 }
-function populateItemTable(product){
-    const table = createEl("div", {class: "table"}, document.querySelector(".show"))
-    const tableHeader = createEl("div", {class: "table-header"}, table)
-    for(let param of product.itemCodeParameters){
-        const columnHead = createEl("div", {class: "column-head"}, tableHeader)
-        columnHead.innerText = toTitleCase(param.name)
+
+function addItem(item){
+    document.querySelector(" form").reset()
+    const table = document.querySelector(".table")
+    const tr = createEl("div", null, table)
+    for(let code of item.itemCodes){
+        const codeContent = createEl("div", null, tr)
+        code.innerText = code.itemCodeParameter.name + ": " + code["item_value"]
     }
-    const colCount =  product.itemCodeParameters.length + 2
-    // for()
+}
+function populateItemTable(product){
+    // document.querySelector(".show").innerHTML = ""
+    const table = createEl("div", {class: "table"}, document.querySelector(".show"))
+    for(let item of product.items) addItem(item)
 
 }
 createProductList()

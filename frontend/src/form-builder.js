@@ -28,13 +28,13 @@ class FormBuilder{
         model.attributes.push({property, input})
     }
     populateModels(){
-        debugger
+        
         this.populateProperties(this.model)
         for(let i of this.included) {
             if(!this.model.instance[i.modelProperty] ) this.model.instance[i.modelProperty] = []
-            debugger
+            
             if(i.modelProperty.slice(-1 == "s") && i.instance.id) this.model.instance[i.modelProperty + "Id"] = i.instance.id
-            debugger
+            
             this.model.instance[i.modelProperty].push(i.instance)
             this.populateProperties(i)}
     }
@@ -45,7 +45,7 @@ class FormBuilder{
     }
     async onSubmit(action = "post"){
         this.populateModels()
-        debugger
+        
         const toInclude = this.included.map(i=>i.modelProperty)
         const res = await this.model.instance[action](null, toInclude)
         this.afterSubmission(res)

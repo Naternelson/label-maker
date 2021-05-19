@@ -17,11 +17,13 @@ class ListTemplate{
         return listItem
     }
     removeItem(item){
+        if(!item){
+            while (this.listItems.length > 0) this.removeItem(this.listItems[0])
+        }
         const index = this.listItems.indexOf(item)
         if (index > -1){
             item.animateOff()
             this.listItems.splice(index,1)
-            // debugger
             item.listItemElement.remove()
         }
     }
